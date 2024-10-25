@@ -1,0 +1,342 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s;
+}
+.game-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background-color: #45a049;
+}
+#hintButton {
+  background-color: #ff9800;
+  display: none;
+  margin: 10px auto;
+}
+#hintButton:hover {
+  background-color: #f57c00;
+}
+.attempts {
+  margin-top: 20px;
+}
+.attribute {
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.correct {
+  background-color: #4caf50;
+  color: white;
+  animation: bounce 0.5s;
+}
+.partial {
+  background-color: #ffd700;
+}
+.incorrect {
+  background-color: #ff6b6b;
+  color: white;
+}
+#gameOver {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+#hint {
+  text-align: center;
+  margin-top: 10px;
+  color: #ff9800;
+  font-weight: bold;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+.attempts-counter {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.progress {
+  height: 10px;
+  background-color: #4caf50;
+  width: 100%;
+  transition: width 0.3s;
+}
+.dark-mode-toggle {
+  margin: 10px 0;
+  cursor: pointer;
+}
+.flag-icon {
+  width: 50px;
+  height: 50px;
+}
+.team-logo {
+  width: 50px;
+  height: 50px;
+}
+:root {
+    --primary-color: #4CAF50;
+    --background-color: #f0f0f0;
+    --card-background: white;
+    --text-color: #333;
+    --border-color: #ccc;
+}
+
+.dark-mode {
+    --primary-color: #66bb6a;
+    --background-color: #1a1a1a;
+    --card-background: #2d2d2d;
+    --text-color: #ffffff;
+    --border-color: #404040;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.game-container {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.autocomplete-container {
+    position: relative;
+    flex-grow: 1;
+}
+
+.autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 0 0 5px 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.autocomplete-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.autocomplete-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+.game-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+#hintButton {
+    background-color: #ff9800;
+    display: none;
+}
+
+.statistics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.stat-card {
+    background-color: var(--card-background);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: var(--border-color);
+    border-radius: 10px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.attempts {
+    margin-top: 20px;
+}
+
+.attempt {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.attribute {
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+}
+
+.correct {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.partial {
+    background-color: #ffd700;
+}
+
+.incorrect {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.share-button {
+    background-color: #1DA1F2;
+    display: none;
+}
+
+@keyframes celebrate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.celebrating {
+    animation: celebrate 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@media (max-width: 600px) {
+    .attempt {
+        font-size: 12px;
+    }
+    
+    .statistics {
+        grid-template-columns: 1fr;
+    }
+}

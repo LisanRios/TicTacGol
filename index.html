@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adivina el Futbolista</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container ">
+      <div class="header">
+
+        <div class="controls">
+            <button class="theme-toggle" onclick="toggleDarkMode()">🌓 Cambiar Tema</button>
+            <div class="game-buttons">
+                <button onclick="resetGame()">🔄 Nueva Partida</button>
+            </div>
+        </div>
+
+        <h1>Adivina el Futbolista</h1>
+
+        <div class="statistics">
+            <div class="stat-card">
+                <h3>Partidas</h3>
+                <p id="totalGames">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Victorias</h3>
+                <p id="totalWins">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Racha</h3>
+                <p id="currentStreak">0</p>
+            </div>
+        </div>
+
+        <p>
+          Intenta adivinar el jugador usando las pistas. ¡Tienes
+          <span id="maxAttemptsDisplay">10</span> intentos!
+        </p>
+        <select id="difficultySelect" onchange="setDifficulty()">
+            <option value="easy">
+                Fácil (Infinitos intentos, pistas infinitas)
+              </option>
+
+          <option value="normal">Normal (10 intentos, 1 pista)</option>
+         
+          <option value="hard">Difícil (5 intentos, sin pistas)</option>
+        </select>
+
+      </div>
+
+      <div class="input-container">
+        <input
+          type="text"
+          id="playerInput"
+          placeholder="Escribe el nombre del jugador..."
+          autocomplete="off"
+        />
+        <button id="guessButton" onclick="checkGuess()">Adivinar</button>
+      </div>
+
+      <button id="hintButton" onclick="getHint()">💡 Pista</button>
+      
+
+      <div id="hint"></div>
+      <div class="attempts-counter" id="attemptsCounter">
+        Intentos restantes: <span id="remainingAttempts">10</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress" id="progressBar" style="width: 100%"></div>
+      </div>
+
+      <div id="attemptsContainer" class="attempts">
+        <div class="attempt">
+          <div class="attribute">Nombre</div>
+          <div class="attribute">País</div>
+          <div class="attribute">Confederación</div>
+          <div class="attribute">Equipo</div>
+          <div class="attribute">Liga</div>
+          <div class="attribute">Posición</div>
+          <div class="attribute">Edad</div>
+          <div class="attribute">Club</div>
+        </div>
+      </div>
+
+      <div id="gameOver"></div>
+
+      <button id="shareButton" class="share-button" onclick="shareResult()" style="display: none;">
+        📤 Compartir
+    </button>
+
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
