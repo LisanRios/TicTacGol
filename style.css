@@ -379,3 +379,96 @@ button:hover {
 .stat-highlight {
   animation: highlight 0.3s ease-in-out;
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background-color: var(--card-background);
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.share-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.share-button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.twitter {
+  background-color: #0b1a23;
+}
+
+.facebook {
+  background-color: #4267B2;
+}
+
+.whatsapp {
+  background-color: #25D366;
+}
+
+.telegram {
+  background-color: #0088cc;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.skip-button {
+  background-color: #666;
+}
+
+.close-button {
+  background-color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+  .share-options {
+      grid-template-columns: 1fr;
+  }
+}
+
+.play-again-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.play-again-button:hover {
+  filter: brightness(1.1);
+}

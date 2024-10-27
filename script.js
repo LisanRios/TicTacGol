@@ -25,7 +25,7 @@ function initializeGame() {
     
     // Configurar otros event listeners
     document.querySelector('button:contains("🔄 Nueva Partida")').addEventListener('click', resetGame);
-    document.querySelector('button:contains("💡 Pista")').addEventListener('click', getHint);
+    document.querySelector('#hintButton').addEventListener('click', getHint);
     document.querySelector('button:contains("📤 Compartir")').addEventListener('click', shareResult);
     document.querySelector('button:contains("🌓 Cambiar Tema")').addEventListener('click', toggleDarkMode);
     
@@ -117,13 +117,15 @@ function resetGame() {
     `;
     
     updateGameState();
+    location.reload(true);
+    
 }
 
 // Función para actualizar el estado del juego
 function updateGameState() {
     document.getElementById('remainingAttempts').textContent = maxAttempts - attempts;
     document.getElementById('hint').textContent = '';
-    document.querySelector('button:contains("💡 Pista")').style.display = hintsRemaining > 0 ? 'block' : 'none';
+    document.querySelector('#hintButton').style.display = hintsRemaining > 0 ? 'block' : 'none';
     document.querySelector('button:contains("📤 Compartir")').style.display = 'none';
     
     updateProgressBar();
@@ -162,27 +164,32 @@ function updateProgressBar() {
 }
 
 function getHint() {
-    const availableHints = [
-        "Nacionalidad",
-        "Media",
-        "Posición",
-        "Skills",
-        "Confederación",
-        "Trayectoria"
-    ].filter(hint => !usedHints.has(hint));
-
-    if (availableHints.length === 0) {
-        document.getElementById("hint").textContent = "¡No hay más pistas disponibles!";
-        return;
-    }
-
-    const randomHint = availableHints[Math.floor(Math.random() * availableHints.length)];
-    usedHints.add(randomHint);
-
-    document.getElementById("hint").textContent = `${randomHint}: ${targetPlayer[randomHint]}`;
-
-    if (availableHints.length === 1) {
-        document.getElementById("hintButton").disabled = true;
+    if (hintsRemaining > 0) {
+        const hint = targetPlayer.Hint;
+        const availableHints = [
+            "Nacionalidad",
+            "Media",
+            "Posición",
+            "Skills",
+            "Confederación",
+            "Trayectoria"
+        ].filter(hint => !usedHints.has(hint));
+    
+        if (availableHints.length === 0) {
+            document.getElementById("hint").textContent = "¡No hay más pistas disponibles!";
+            return;
+        }
+    
+        const randomHint = availableHints[Math.floor(Math.random() * availableHints.length)];
+        usedHints.add(randomHint);
+    
+        document.getElementById("hint").textContent = `${randomHint}: ${targetPlayer[randomHint]}`;
+    
+        if (availableHints.length === 1) {
+            document.getElementById("hintButton").disabled = true;
+        }
+    
+        hintsRemaining--;
     }
 }
 
@@ -373,6 +380,7 @@ function endGame(won) {
     updateStats();
     saveStats();
     updateAttemptsCounter();
+    showEndGameModal(score, attempts);
 }
 
 // Funciones para persistir estadísticas
@@ -494,3 +502,59 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeGame();
     loadPlayers();
 });
+
+function showEndGameModal(score, attempts) {
+    const modal = document.getElementById('endGameModal');
+    const finalScore = document.getElementById('finalScore');
+    
+    // Crear el mensaje para compartir
+    const shareMessage = `¡He completado el juego en ${attempts} intentos! ¿Puedes superarlo?!
+Racha actual: ${currentStreak}
+Mejor racha: ${bestStreak}
+Partidas ganadas: ${score.wins}/${score.gamesPlayed}
+¿Puedes superarme? 😏`;
+    
+    finalScore.textContent = shareMessage;
+
+    // Mostrar el modal
+    modal.style.display = 'block';
+
+    // Configurar los botones de compartir
+    document.getElementById('twitterShare').onclick = () => {
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage)}&url=${encodeURIComponent(window.location.href)}`;
+        window.open(url, '_blank');
+    };
+
+    document.getElementById('facebookShare').onclick = () => {
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(shareMessage)}`;
+        window.open(url, '_blank');
+    };
+
+    document.getElementById('whatsappShare').onclick = () => {
+        const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareMessage + ' ' + window.location.href)}`;
+        window.open(url, '_blank');
+    };
+
+    document.getElementById('telegramShare').onclick = () => {
+        const url = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(shareMessage)}`;
+        window.open(url, '_blank');
+    };
+
+    // Manejar el botón de saltar
+    document.getElementById('shareSkip').onclick = () => {
+        modal.style.display = 'none';
+        resetGame();
+    };
+
+    // Manejar el botón de cerrar
+    document.getElementById('modalClose').onclick = () => {
+        modal.style.display = 'none';
+    };
+
+    // Cerrar el modal si se hace clic fuera de él
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+}

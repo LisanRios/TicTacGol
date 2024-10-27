@@ -8,9 +8,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    
     <link rel="stylesheet" href="style.css" />
-  
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/b5a871f24b.js" crossorigin="anonymous"></script>
+    
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -69,8 +70,9 @@
         
                   <div class="game-buttons">
                       <button id="newGameButton" onclick="resetGame()">🔄 Nueva Partida</button>
+                      <button id="newGameButton" onclick="resetStats()">📊 Reiniciar Puntos</button>
                   </div>
-        
+
                   <div class="input-container">
                     <input type="text" id="playerInput" list="playersList" placeholder="Ingresa el nombre del jugador">
                     <datalist id="playersList"></datalist>
@@ -94,12 +96,37 @@
         
                   <div id="attemptsContainer" class="attempts"></div>
                   <div id="gameOver"></div>
-                  
+
                   <button id="shareButton" onclick="shareResult()" style="display: none">
-                      📤 Compartir
                   </button>
               </div>
           </div>
+
+          <!-- Añade esto después de tu game-container -->
+<div id="endGameModal" class="modal">
+  <div class="modal-content">
+      <h2>¡Juego terminado!</h2>
+      <p id="finalScore"></p>
+      <div class="share-options">
+          <button id="twitterShare" class="share-button twitter">
+            <i class="fa-brands fa-x-twitter"></i>X
+          </button>
+          <button id="facebookShare" class="share-button facebook">
+              <i class="fab fa-facebook"></i> Facebook
+          </button>
+          <button id="whatsappShare" class="share-button whatsapp">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+          </button>
+          <button id="telegramShare" class="share-button telegram">
+              <i class="fab fa-telegram"></i> Telegram
+          </button>
+      </div>
+      <div class="modal-buttons">
+          <button id="shareSkip" class="skip-button">Jugar de nuevo</button>
+          <button id="modalClose" class="close-button">Cerrar</button>
+      </div>
+  </div>
+</div>
 
   <script src="script.js"></script>
 
