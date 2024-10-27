@@ -9,93 +9,102 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+  
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
   </head>
   <body>
+    
     <div class="game-container ">
       <div class="header">
+        <div class="game-container">
+          <div class="header">
+              <div class="controls">
+                  <button onclick="toggleDarkMode()" class="theme-toggle">
+                      🌓 Cambiar Tema
+                  </button>
+              </div>
+              
+              <h1>Adivina el Futbolista</h1>
+              
+              <!-- Selector de dificultad -->
+              <div id="difficulty-selector" class="difficulty-selection">
+                  <h2>Selecciona la dificultad</h2>
+                  <div class="difficulty-buttons">
+                      <button onclick="setDifficulty('easy')" class="difficulty-btn">
+                          Fácil
+                          <span class="difficulty-details">20 intentos, 3 pistas</span>
+                      </button>
+                      <button onclick="setDifficulty('normal')" class="difficulty-btn">
+                          Normal
+                          <span class="difficulty-details">10 intentos, 1 pista</span>
+                      </button>
+                      <button onclick="setDifficulty('hard')" class="difficulty-btn">
+                          Difícil
+                          <span class="difficulty-details">5 intentos, sin pistas</span>
+                      </button>
+                  </div>
+              </div>
+        
+              <!-- Contenido del juego (inicialmente oculto) -->
+              <div id="game-content" class="game-content" style="display: none;">
+                  <div class="statistics">
+                      <div class="stat-card">
+                          <h3>Racha Actual</h3>
+                          <div id="currentStreak" class="stat-value">-</div>
+                      </div>
+                      <div class="stat-card">
+                          <h3>Mejor Racha</h3>
+                          <div id="bestStreak" class="stat-value">-</div>
+                      </div>
+                      <div class="stat-card">
+                          <h3>Partidas</h3>
+                          <div id="totalGames" class="stat-value">-</div>
+                      </div>
+                      <div class="stat-card">
+                          <h3>% Victoria</h3>
+                          <div id="winRate" class="stat-value">-</div>
+                      </div>
+                  </div>
+        
+                  <div class="game-buttons">
+                      <button id="newGameButton" onclick="resetGame()">🔄 Nueva Partida</button>
+                  </div>
+        
+                  <div class="input-container">
+                    <input type="text" id="playerInput" list="playersList" placeholder="Ingresa el nombre del jugador">
+                    <datalist id="playersList"></datalist>
+                    <button onclick="checkGuess()" id="guessButton">Adivinar</button>
+                  </div>
+                  <div class="input-container">
+        
+                </div>
+        
+                  <button id="hintButton" onclick="getHint()">💡 Pista</button>
+        
+                  <div id="hint" class="hint-text"></div>
+        
+                  <div id="attemptsCounter" class="attempts-counter">
+                      Intentos restantes: <span id="remainingAttempts">-</span>
+                  </div>
+        
+                  <div class="progress-bar">
+                      <div id="progressBar" class="progress"></div>
+                  </div>
+        
+                  <div id="attemptsContainer" class="attempts"></div>
+                  <div id="gameOver"></div>
+                  
+                  <button id="shareButton" onclick="shareResult()" style="display: none">
+                      📤 Compartir
+                  </button>
+              </div>
+          </div>
 
-        <div class="controls">
-            <button class="theme-toggle" onclick="toggleDarkMode()">🌓 Cambiar Tema</button>
-            <div class="game-buttons">
-                <button onclick="resetGame()">🔄 Nueva Partida</button>
-            </div>
-        </div>
+  <script src="script.js"></script>
 
-        <h1>Adivina el Futbolista</h1>
-
-        <div class="statistics">
-            <div class="stat-card">
-                <h3>Partidas</h3>
-                <p id="totalGames">0</p>
-            </div>
-            <div class="stat-card">
-                <h3>Victorias</h3>
-                <p id="totalWins">0</p>
-            </div>
-            <div class="stat-card">
-                <h3>Racha</h3>
-                <p id="currentStreak">0</p>
-            </div>
-        </div>
-
-        <p>
-          Intenta adivinar el jugador usando las pistas. ¡Tienes
-          <span id="maxAttemptsDisplay">10</span> intentos!
-        </p>
-        <select id="difficultySelect" onchange="setDifficulty()">
-            <option value="easy">
-                Fácil (Infinitos intentos, pistas infinitas)
-              </option>
-
-          <option value="normal">Normal (10 intentos, 1 pista)</option>
-         
-          <option value="hard">Difícil (5 intentos, sin pistas)</option>
-        </select>
-
-      </div>
-
-      <div class="input-container">
-        <input
-          type="text"
-          id="playerInput"
-          placeholder="Escribe el nombre del jugador..."
-          autocomplete="off"
-        />
-        <button id="guessButton" onclick="checkGuess()">Adivinar</button>
-      </div>
-
-      <button id="hintButton" onclick="getHint()">💡 Pista</button>
-      
-
-      <div id="hint"></div>
-      <div class="attempts-counter" id="attemptsCounter">
-        Intentos restantes: <span id="remainingAttempts">10</span>
-      </div>
-      <div class="progress-bar">
-        <div class="progress" id="progressBar" style="width: 100%"></div>
-      </div>
-
-      <div id="attemptsContainer" class="attempts">
-        <div class="attempt">
-          <div class="attribute">Nombre</div>
-          <div class="attribute">País</div>
-          <div class="attribute">Confederación</div>
-          <div class="attribute">Equipo</div>
-          <div class="attribute">Liga</div>
-          <div class="attribute">Posición</div>
-          <div class="attribute">Edad</div>
-          <div class="attribute">Club</div>
-        </div>
-      </div>
-
-      <div id="gameOver"></div>
-
-      <button id="shareButton" class="share-button" onclick="shareResult()" style="display: none;">
-        📤 Compartir
-    </button>
-
-    </div>
-
-    <script src="script.js"></script>
   </body>
 </html>
+
+
+
