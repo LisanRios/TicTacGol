@@ -472,3 +472,29 @@ button:hover {
 .play-again-button:hover {
   filter: brightness(1.1);
 }
+
+#hintButton {
+  background-color: #ff9800;
+  margin: 10px auto;
+  display: block; /* Cambiado de 'none' a 'block' */
+}
+
+.hint-container {
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: var(--card-background);
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+}
+
+#hintButton {
+  background-color: #ff9800;
+  margin: 10px auto;
+  display: block;
+}
+
+#hintButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

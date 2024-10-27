@@ -78,47 +78,67 @@ function handleDifficultySelection(event) {
 
 function setDifficulty() {
     const difficulty = document.getElementById("difficultySelect").value;
+    const hintButton = document.getElementById("hintButton");
+    
     if (difficulty === "easy") {
-        maxAttempts = Infinity;
-        document.getElementById("hintButton").style.display = "block";
+        maxAttempts = 20;
+        hintButton.style.display = "block"; // Mostrar pistas
     } else if (difficulty === "normal") {
         maxAttempts = 10;
-        document.getElementById("hintButton").style.display = "block";
+        hintButton.style.display = "block"; // Mostrar pistas
     } else if (difficulty === "hard") {
         maxAttempts = 5;
-        document.getElementById("hintButton").style.display = "none";
+        hintButton.style.display = "none"; // Ocultar pistas
     }
+    
     attempts = 0;
     updateAttemptsCounter();
-    document.getElementById("maxAttemptsDisplay").textContent = 
-        maxAttempts === Infinity ? "Infinitos" : maxAttempts;
     resetGame();
 }
 
 // Función para reiniciar el juego
 function resetGame() {
-    if (!gameStarted) return;
-    
     targetPlayer = players[Math.floor(Math.random() * players.length)];
-    attempts = 0;
     usedHints.clear();
+    attempts = 0;// Reiniciar intentos
     
-    document.getElementById('attemptsContainer').innerHTML = `
+    // Resetear el botón de pistas
+    const hintButton = document.getElementById("hintButton");
+    hintButton.disabled = false;
+    const difficulty = document.getElementById("difficultySelect").value;////////////////////////////////////////////////
+    if (difficulty !== "hard") {
+        hintButton.style.display = "block";
+    }
+    
+    // Limpiar y habilitar controles
+    document.getElementById("attemptsContainer").innerHTML = `
         <div class="attempt">
             <div class="attribute">Nombre</div>
-            <div class="attribute">Nacionalidad</div>
+            <div class="attribute">País</div>
             <div class="attribute">Confederación</div>
-            <div class="attribute">Media</div>
+            <div class="attribute">Equipo</div>
+            <div class="attribute">Liga</div>
             <div class="attribute">Posición</div>
-            <div class="attribute">Skills</div>
-            <div class="attribute">Altura</div>
-            <div class="attribute">Trayectoria</div>
+            <div class="attribute">Edad</div>
+            <div class="attribute">Bandera</div>
+            <div class="attribute">Logo</div>
         </div>
     `;
     
-    updateGameState();
-    location.reload(true);
+    // Habilitar controles
+    document.getElementById("playerInput").disabled = false;
+    document.getElementById("playerInput").value = "";
+    document.getElementById("guessButton").disabled = false;
+    document.getElementById("hintButton").disabled = false;
     
+    // Ocultar elementos de fin de juego
+    document.getElementById("gameOver").innerHTML = "";
+    document.getElementById("shareButton").style.display = "none";
+    document.getElementById("newGameButton").style.display = "none";
+    document.getElementById("hint").textContent = "";
+    
+    // Actualizar contadores
+    updateAttemptsCounter();
 }
 
 // Función para actualizar el estado del juego
@@ -344,41 +364,19 @@ async function loadPlayers() {
 function endGame(won) {
     const gameOver = document.getElementById("gameOver");
     if (won) {
-        gameOver.innerHTML = `¡Felicitaciones! Has adivinado al jugador: ${targetPlayer.Nombre}`;
+        gameOver.innerHTML = `¡Felicitaciones! Has adivinado al jugador: ${targetPlayer.name}`;
         gameOver.style.color = "#4CAF50";
         score.wins++;
-        
-        // Actualizar racha actual
-        currentStreak++;
-        
-        // Actualizar mejor racha
-        if (currentStreak > bestStreak) {
-            bestStreak = currentStreak;
-        }
-        
-        lastGameResult = true;
     } else {
-        gameOver.innerHTML = `¡Game Over! El jugador era: ${targetPlayer.Nombre}`;
+        gameOver.innerHTML = `¡Game Over! El jugador era: ${targetPlayer.name}`;
         gameOver.style.color = "#ff6b6b";
         score.losses++;
-        currentStreak = 0;
-        lastGameResult = false;
     }
-    
     score.gamesPlayed++;
-    
-    // Deshabilitar controles del juego
     document.getElementById("playerInput").disabled = true;
     document.getElementById("guessButton").disabled = true;
-    document.getElementById("hintButton").disabled = true;
-    
-    // Mostrar botones post-juego
+    document.getElementById("shareButton").style.display = "block"; // Mostrar botón de compartir siempre
     document.getElementById("newGameButton").style.display = "block";
-    document.getElementById("shareButton").style.display = "block";
-    
-    // Actualizar y guardar estadísticas
-    updateStats();
-    saveStats();
     updateAttemptsCounter();
     showEndGameModal(score, attempts);
 }
@@ -448,16 +446,7 @@ async function loadPlayers() {
 }
 
 function shareResult() {
-    const resultMessage = `¡He adivinado a la leyenda del fútbol: ${targetPlayer.Nombre}!
-Racha actual: ${currentStreak}
-Mejor racha: ${bestStreak}
-Partidas ganadas: ${score.wins}/${score.gamesPlayed}
-¿Puedes superarme?`;
-    
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent(resultMessage);
-    const shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-    window.open(shareUrl, "_blank");
+    showEndGameModal(score, attempts)
 }
 
 function toggleDarkMode() {
