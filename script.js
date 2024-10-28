@@ -14,6 +14,12 @@ let score = {
     gamesPlayed: 0
 };
 
+// Cuando se carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    resetGame();
+    updateStatistics();
+});
+
 // Función para inicializar el juego
 function initializeGame() {
     // Configurar event listeners
@@ -100,45 +106,54 @@ function setDifficulty() {
 function resetGame() {
     targetPlayer = players[Math.floor(Math.random() * players.length)];
     usedHints.clear();
-    attempts = 0;// Reiniciar intentos
+    attempts = 0;
     
-    // Resetear el botón de pistas
-    const hintButton = document.getElementById("hintButton");
-    hintButton.disabled = false;
-    const difficulty = document.getElementById("difficultySelect").value;////////////////////////////////////////////////
-    if (difficulty !== "hard") {
-        hintButton.style.display = "block";
+    const difficultySelect = document.getElementById("difficultySelect");
+    if (difficultySelect) {
+        maxAttempts = difficultySelect.value === "easy" ? Infinity : 
+                      difficultySelect.value === "normal" ? 10 : 5;
     }
-    
-    // Limpiar y habilitar controles
-    document.getElementById("attemptsContainer").innerHTML = `
-        <div class="attempt">
-            <div class="attribute">Nombre</div>
-            <div class="attribute">País</div>
-            <div class="attribute">Confederación</div>
-            <div class="attribute">Equipo</div>
-            <div class="attribute">Liga</div>
-            <div class="attribute">Posición</div>
-            <div class="attribute">Edad</div>
-            <div class="attribute">Bandera</div>
-            <div class="attribute">Logo</div>
-        </div>
-    `;
-    
-    // Habilitar controles
-    document.getElementById("playerInput").disabled = false;
-    document.getElementById("playerInput").value = "";
-    document.getElementById("guessButton").disabled = false;
-    document.getElementById("hintButton").disabled = false;
-    
-    // Ocultar elementos de fin de juego
-    document.getElementById("gameOver").innerHTML = "";
-    document.getElementById("shareButton").style.display = "none";
-    document.getElementById("newGameButton").style.display = "none";
-    document.getElementById("hint").textContent = "";
-    
-    // Actualizar contadores
+
+    const attemptsContainer = document.getElementById("attemptsContainer");
+    if (attemptsContainer) {
+        attemptsContainer.innerHTML = `
+            <div class="attempt">
+                <div class="attribute">Nombre</div>
+                <div class="attribute">País</div>
+                <div class="attribute">Confederación</div>
+                <div class="attribute">Equipo</div>
+                <div class="attribute">Liga</div>
+                <div class="attribute">Posición</div>
+                <div class="attribute">Edad</div>
+                <div class="attribute">Bandera</div>
+                <div class="attribute">Logo</div>
+            </div>
+        `;
+    }
+
+    const gameOver = document.getElementById("gameOver");
+    if (gameOver) gameOver.innerHTML = "";
+
+    const playerInput = document.getElementById("playerInput");
+    if (playerInput) {
+        playerInput.value = "";
+        playerInput.disabled = false;
+    }
+
+    const guessButton = document.getElementById("guessButton");
+    if (guessButton) guessButton.disabled = false;
+
+    const shareButton = document.getElementById("shareButton");
+    if (shareButton) shareButton.style.display = "none";
+
+    const newGameButton = document.getElementById("newGameButton");
+    if (newGameButton) newGameButton.style.display = "none";
+
+    const hint = document.getElementById("hint");
+    if (hint) hint.textContent = "";
+
     updateAttemptsCounter();
+    updateStatistics();
 }
 
 // Función para actualizar el estado del juego
@@ -152,6 +167,15 @@ function updateGameState() {
     updateStats();
 }
 
+function updateStatistics() {
+    const totalGames = document.getElementById('totalGames');
+    const totalWins = document.getElementById('totalWins');
+    const currentStreak = document.getElementById('currentStreak');
+    
+    if (totalGames) totalGames.textContent = score.gamesPlayed;
+    if (totalWins) totalWins.textContent = score.wins;
+    if (currentStreak) currentStreak.textContent = score.wins - score.losses;
+}
 
 // Función para actualizar las estadísticas en la UI
 function updateStats() {
@@ -364,21 +388,34 @@ async function loadPlayers() {
 function endGame(won) {
     const gameOver = document.getElementById("gameOver");
     if (won) {
-        gameOver.innerHTML = `¡Felicitaciones! Has adivinado al jugador: ${targetPlayer.name}`;
-        gameOver.style.color = "#4CAF50";
+        if (gameOver) {
+            gameOver.innerHTML = `¡Felicitaciones! Has adivinado al jugador: ${targetPlayer.Nombre}`;
+            gameOver.style.color = "#4CAF50";
+        }
         score.wins++;
+        const shareButton = document.getElementById("shareButton");
+        if (shareButton) shareButton.style.display = "block";
     } else {
-        gameOver.innerHTML = `¡Game Over! El jugador era: ${targetPlayer.name}`;
-        gameOver.style.color = "#ff6b6b";
+        if (gameOver) {
+            gameOver.innerHTML = `¡Game Over! El jugador era: ${targetPlayer.Nombre}`;
+            gameOver.style.color = "#ff6b6b";
+        }
         score.losses++;
     }
+    
     score.gamesPlayed++;
-    document.getElementById("playerInput").disabled = true;
-    document.getElementById("guessButton").disabled = true;
-    document.getElementById("shareButton").style.display = "block"; // Mostrar botón de compartir siempre
-    document.getElementById("newGameButton").style.display = "block";
+    
+    const playerInput = document.getElementById("playerInput");
+    if (playerInput) playerInput.disabled = true;
+    
+    const guessButton = document.getElementById("guessButton");
+    if (guessButton) guessButton.disabled = true;
+    
+    const newGameButton = document.getElementById("newGameButton");
+    if (newGameButton) newGameButton.style.display = "block";
+    
     updateAttemptsCounter();
-    showEndGameModal(score, attempts);
+    updateStatistics();
 }
 
 // Funciones para persistir estadísticas
