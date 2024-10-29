@@ -58,21 +58,27 @@ async function loadPlayers() {
         console.error('Error cargando los datos:', error);
     }
 }
+
 // Manejador de selección de dificultad
 function handleDifficultySelection(event) {
     const button = event.target.closest('button');
     if (!button) return;
     
     const difficultyText = button.textContent;
+    const hintButton = document.getElementById("hintButton"); // Añadir esta línea
+    
     if (difficultyText.includes('Fácil')) {
         maxAttempts = 20;
         hintsRemaining = 3;
+        hintButton.style.display = 'block'; // Mostrar botón
     } else if (difficultyText.includes('Normal')) {
         maxAttempts = 10;
         hintsRemaining = 1;
+        hintButton.style.display = 'block'; // Mostrar botón
     } else if (difficultyText.includes('Difícil')) {
         maxAttempts = 5;
         hintsRemaining = 0;
+        hintButton.style.display = 'none'; // Ocultar botón
     }
     
     document.getElementById('difficulty-selector').style.display = 'none';
@@ -80,7 +86,6 @@ function handleDifficultySelection(event) {
     gameStarted = true;
     resetGame();
 }
-
 
 function setDifficulty() {
     const difficulty = document.getElementById("difficultySelect").value;
@@ -108,6 +113,14 @@ function resetGame() {
     usedHints.clear();
     attempts = 0;
     
+    // Mantener el estado del botón de pista según la dificultad
+    const hintButton = document.getElementById("hintButton");
+    if (maxAttempts === 5) { // Si está en modo difícil
+        hintButton.style.display = 'none';
+    } else {
+        hintButton.style.display = 'block';
+    }
+    
     const difficultySelect = document.getElementById("difficultySelect");
     if (difficultySelect) {
         maxAttempts = difficultySelect.value === "easy" ? Infinity : 
@@ -121,12 +134,11 @@ function resetGame() {
                 <div class="attribute">Nombre</div>
                 <div class="attribute">País</div>
                 <div class="attribute">Confederación</div>
-                <div class="attribute">Equipo</div>
-                <div class="attribute">Liga</div>
+                <div class="attribute">Media</div>
                 <div class="attribute">Posición</div>
-                <div class="attribute">Edad</div>
-                <div class="attribute">Bandera</div>
-                <div class="attribute">Logo</div>
+                <div class="attribute">Skills</div>
+                <div class="attribute">Altura</div>
+                <div class="attribute">Trayectoria</div>
             </div>
         `;
     }
@@ -156,25 +168,28 @@ function resetGame() {
     updateStatistics();
 }
 
-// Función para actualizar el estado del juego
-function updateGameState() {
-    document.getElementById('remainingAttempts').textContent = maxAttempts - attempts;
-    document.getElementById('hint').textContent = '';
-    document.querySelector('#hintButton').style.display = hintsRemaining > 0 ? 'block' : 'none';
-    document.querySelector('button:contains("📤 Compartir")').style.display = 'none';
-    
-    updateProgressBar();
-    updateStats();
-}
-
 function updateStatistics() {
     const totalGames = document.getElementById('totalGames');
     const totalWins = document.getElementById('totalWins');
-    const currentStreak = document.getElementById('currentStreak');
+    const currentStreakElement = document.getElementById('currentStreak');
+    const bestStreakElement = document.getElementById('bestStreak');
+    const winRateElement = document.getElementById('winRate');
     
     if (totalGames) totalGames.textContent = score.gamesPlayed;
     if (totalWins) totalWins.textContent = score.wins;
-    if (currentStreak) currentStreak.textContent = score.wins - score.losses;
+    
+    // Asegurarse de que la racha actual nunca sea negativa
+    currentStreak = Math.max(0, currentStreak);
+    if (currentStreakElement) currentStreakElement.textContent = currentStreak;
+    
+    if (bestStreakElement) bestStreakElement.textContent = bestStreak;
+    
+    if (winRateElement && score.gamesPlayed > 0) {
+        const winRate = ((score.wins / score.gamesPlayed) * 100).toFixed(1);
+        winRateElement.textContent = `${winRate}%`;
+    } else if (winRateElement) {
+        winRateElement.textContent = "0%";
+    }
 }
 
 // Función para actualizar las estadísticas en la UI
@@ -393,6 +408,8 @@ function endGame(won) {
             gameOver.style.color = "#4CAF50";
         }
         score.wins++;
+        currentStreak++;
+        bestStreak = Math.max(bestStreak, currentStreak);
         const shareButton = document.getElementById("shareButton");
         if (shareButton) shareButton.style.display = "block";
     } else {
@@ -401,6 +418,7 @@ function endGame(won) {
             gameOver.style.color = "#ff6b6b";
         }
         score.losses++;
+        currentStreak = 0;
     }
     
     score.gamesPlayed++;
@@ -416,6 +434,7 @@ function endGame(won) {
     
     updateAttemptsCounter();
     updateStatistics();
+    saveStats(); // Asegúrate de guardar las estadísticas actualizadas
 }
 
 // Funciones para persistir estadísticas
@@ -442,11 +461,9 @@ function loadStats() {
             currentStreak = stats.currentStreak || 0;
             bestStreak = stats.bestStreak || 0;
             score = stats.score || { wins: 0, losses: 0, gamesPlayed: 0 };
-            lastGameResult = stats.lastGameResult;
             updateStats();
         } catch (error) {
             console.error('Error al cargar las estadísticas:', error);
-            // Reiniciar estadísticas si hay error
             resetStats();
         }
     } else {
