@@ -345,6 +345,10 @@ function checkGuess() {
                       guessedPlayer[key].split(", ").some(pos => 
                           targetPlayer[key].split(", ").includes(pos))) {
                 div.classList.add("partial");
+            } else if (key === "Trayectoria" && 
+                      guessedPlayer[key].split(", ").some(pos => 
+                          targetPlayer[key].split(", ").includes(pos))) {
+                div.classList.add("partial");
             } else {
                 div.classList.add("incorrect");
             }
