@@ -20,11 +20,54 @@
       <div class="header">
         <div class="game-container">
           <div class="header">
-              <div class="controls">
-                  <button onclick="toggleDarkMode()" class="theme-toggle">
-                      🌓 Cambiar Tema
-                  </button>
-              </div>
+              <!-- Agregar este botón junto a los otros controles en el header -->
+<div class="controls">
+    <button onclick="toggleDarkMode()" class="theme-toggle">
+        🌓 Cambiar Tema
+    </button>
+    <button onclick="showRules()" class="rules-toggle">
+        📋 Reglas
+    </button>
+</div>
+
+<!-- Agregar este modal de reglas antes del cierre del body -->
+<div id="rulesModal" class="modal">
+    <div class="modal-content">
+        <h2>📋 ¿Cómo jugar?</h2>
+        <div class="rules-content">
+            <p>¡Bienvenido a Adivina el Futbolista! Aquí están las reglas básicas:</p>
+            
+            <h3>🎯 Objetivo</h3>
+            <p>Adivina el futbolista misterioso en el menor número de intentos posible.</p>
+            
+            <h3>📝 Niveles de dificultad</h3>
+            <ul>
+                <li>🟢 <strong>Fácil:</strong> 20 intentos y 3 pistas</li>
+                <li>🟡 <strong>Normal:</strong> 10 intentos y 1 pista</li>
+                <li>🔴 <strong>Difícil:</strong> 5 intentos sin pistas</li>
+            </ul>
+            
+            <h3>🎮 Cómo jugar</h3>
+            <ol>
+                <li>Escribe el nombre de un futbolista en el campo de búsqueda</li>
+                <li>Con cada intento, recibirás pistas sobre diferentes atributos:</li>
+                <ul>
+                    <li>🟢 Verde: Coincidencia exacta</li>
+                    <li>🟡 Amarillo: Coincidencia parcial</li>
+                    <li>🔴 Rojo: Sin coincidencia</li>
+                </ul>
+                <li>Los atributos incluyen: Nombre, País, Confederación, Media, Posición, Skills, Altura y Trayectoria</li>
+            </ol>
+            
+            <h3>💡 Pistas</h3>
+            <p>Puedes usar el botón de pista para obtener información adicional sobre el jugador (según el nivel de dificultad).</p>
+            
+            <h3>🏆 Puntuación</h3>
+            <p>El juego registra tus estadísticas, incluyendo racha actual, mejor racha y porcentaje de victorias.</p>
+        </div>
+        <button id="rulesClose" class="close-button">Entendido</button>
+    </div>
+</div>
               
               <h1>Adivina el Futbolista</h1>
               
@@ -78,7 +121,6 @@
                     <datalist id="playersList"></datalist>
                     <button onclick="checkGuess()" id="guessButton">Adivinar</button>
                   </div>
-                  <div class="input-container">
         
                 </div>
         
@@ -103,36 +145,24 @@
               </div>
           </div>
 
-<div id="endGameModal" class="modal">
-  <div class="modal-content">
-      <h2>¡Juego terminado!</h2>
-      <p id="finalScore"></p>
-      <div class="share-options">
-          <button id="twitterShare" class="share-button x">
-            <i class="fa-brands fa-x-twitter"></i>X
-          </button>
-          <button id="facebookShare" class="share-button facebook">
-              <i class="fab fa-facebook"></i> Facebook
-          </button>
-          <button id="whatsappShare" class="share-button whatsapp">
-              <i class="fab fa-whatsapp"></i> WhatsApp
-          </button>
-          <button id="telegramShare" class="share-button telegram">
-              <i class="fab fa-telegram"></i> Telegram
-          </button>
-          <button id="instagramShare" class="share-button instagram">
-            <i class="fa-brands fa-instagram"></i>Instagram
-        </button>
-        <button id="redditShare" class="share-button reddit">
-            <i class="fa-brands fa-reddit-alien"></i> Reddit
-        </button>
-      </div>
-      <div class="modal-buttons">
-          <button id="shareSkip" class="skip-button">Jugar de nuevo</button>
-          <button id="modalClose" class="close-button">Cerrar</button>
-      </div>
-  </div>
-</div>
+          <div id="endGameModal" class="modal">
+            <div class="modal-content">
+                <h2>¡Juego terminado!</h2>
+                <p id="finalScore"></p>
+                <div class="share-options">
+                    <button class="share-button x" id="twitterShare">X</button>
+                    <button class="share-button facebook" id="facebookShare">Facebook</button>
+                    <button class="share-button whatsapp" id="whatsappShare">WhatsApp</button>
+                    <button class="share-button telegram" id="telegramShare">Telegram</button>
+                    <button class="share-button instagram" id="instagramShare">Instagram</button>
+                    <button class="share-button reddit" id="redditShare">Reddit</button>
+                </div>
+                <div class="modal-buttons">
+                    <button onclick="resetGame()">Jugar de nuevo</button>
+                    <button onclick="document.getElementById('endGameModal').style.display='none'">Cerrar</button>
+                </div>
+            </div>
+        </div>
 
   <script src="script.js"></script>
 

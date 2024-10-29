@@ -585,20 +585,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function showEndGameModal(score, attempts) {
-  const modal = document.getElementById("endGameModal");
-  const finalScore = document.getElementById("finalScore");
+    const modal = document.getElementById("endGameModal");
+    const finalScore = document.getElementById("finalScore");
 
-  // Crear el mensaje para compartir
-  const shareMessage = `¡He completado el juego en ${attempts} intentos! ¿Puedes superarlo?!
+    // Crear el mensaje para compartir
+    const shareMessage = `¡He completado el juego en ${attempts} intentos! ¿Puedes superarlo?!
 Racha actual: ${currentStreak}
 Mejor racha: ${bestStreak}
 Partidas ganadas: ${score.wins}/${score.gamesPlayed}
 ¿Puedes superarme? 😏`;
 
-  finalScore.textContent = shareMessage;
+    if (finalScore) {
+        finalScore.textContent = shareMessage;
+    }
 
-  // Mostrar el modal
-  modal.style.display = "block";
+    // Mostrar el modal
+    if (modal) {
+        modal.style.display = "flex";
+    }
 
   // Configurar los botones de compartir
   document.getElementById("twitterShare").onclick = () => {
@@ -656,21 +660,53 @@ Partidas ganadas: ${score.wins}/${score.gamesPlayed}
       });
   };
 
-  // Manejar el botón de saltar
-  document.getElementById("shareSkip").onclick = () => {
-    modal.style.display = "none";
-    resetGame();
-  };
-
-  // Manejar el botón de cerrar
-  document.getElementById("modalClose").onclick = () => {
-    modal.style.display = "none";
-  };
-
-  // Cerrar el modal si se hace clic fuera de él
-  window.onclick = (event) => {
-    if (event.target === modal) {
-      modal.style.display = "none";
+    
+    // 1. Cerrar con el botón de cerrar
+    const closeButton = document.querySelector(".modal-buttons button:last-child");
+    if (closeButton) {
+        closeButton.onclick = () => {
+            modal.style.display = "none";
+        };
     }
-  };
+
+    // 2. Cerrar con el botón de nueva partida
+    const newGameButton = document.querySelector(".modal-buttons button:first-child");
+    if (newGameButton) {
+        newGameButton.onclick = () => {
+            modal.style.display = "none";
+            resetGame();
+        };
+    }
+
+    // 3. Cerrar al hacer clic fuera del modal
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    // 4. Añadir la tecla Escape para cerrar el modal
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.style.display === "flex") {
+            modal.style.display = "none";
+        }
+    });
+}
+
+// Función para mostrar las reglas
+function showRules() {
+    const modal = document.getElementById('rulesModal');
+    modal.style.display = 'flex';
+    
+    // Cerrar con el botón
+    document.getElementById('rulesClose').onclick = () => {
+        modal.style.display = 'none';
+    };
+    
+    // Cerrar al hacer clic fuera del modal
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
 }
