@@ -1,15 +1,15 @@
 :root {
-  --primary-color: #4CAF50;
-  --secondary-color: #FF9800;
+  --primary-color: #4caf50;
+  --secondary-color: #ff9800;
   --background-color: #f0f0f0;
   --card-background: white;
   --text-color: #333;
   --border-color: #ccc;
-  --correct-color: #4CAF50;
-  --partial-color: #FFC107;
-  --incorrect-color: #FF5722;
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --correct-color: #4caf50;
+  --partial-color: #ffc107;
+  --incorrect-color: #ff5722;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --radius-sm: 8px;
   --radius-md: 12px;
   --spacing-xs: 4px;
@@ -78,6 +78,7 @@ body {
   flex-direction: column;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-lg);
+  padding: 2%;
 }
 
 input[type="text"] {
@@ -177,19 +178,19 @@ button:active {
 }
 
 /* Results Styling */
-.correct { 
-  background-color: var(--correct-color); 
+.correct {
+  background-color: var(--correct-color);
   color: white;
   font-weight: 600;
 }
 
-.partial { 
+.partial {
   background-color: var(--partial-color);
   font-weight: 600;
 }
 
-.incorrect { 
-  background-color: var(--incorrect-color); 
+.incorrect {
+  background-color: var(--incorrect-color);
   color: white;
   font-weight: 600;
 }
@@ -269,8 +270,8 @@ button:active {
   --card-background: #1e1e1e;
   --text-color: #ffffff;
   --border-color: #2d2d2d;
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Tablet Breakpoint */
@@ -278,15 +279,15 @@ button:active {
   .statistics {
     grid-template-columns: repeat(4, 1fr);
   }
-  
+
   .input-container {
     flex-direction: row;
   }
-  
+
   .share-options {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   button {
     min-width: 120px;
   }
@@ -294,11 +295,11 @@ button:active {
 
 /* Animations Enhancement */
 @keyframes fadeIn {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(10px);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -309,13 +310,20 @@ button:active {
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-8px); }
-  75% { transform: translateX(8px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
 }
 
 .shake {
-  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 /* Touch Device Optimization */
@@ -323,13 +331,45 @@ button:active {
   button:hover {
     filter: brightness(1.1);
   }
-  
+
   .theme-toggle:hover {
     background-color: var(--primary-color);
     color: white;
   }
-  
+
   .share-button:hover {
     transform: translateY(-2px);
   }
+}
+
+.x {
+  background-color: black;
+}
+
+.facebook {
+  background-color: rgb(7, 17, 159);
+}
+
+.telegram {
+  background-color: rgb(46, 97, 208);
+}
+
+.whatsapp {
+  background-color: rgb(20, 215, 49);
+}
+
+.share-button.reddit {
+  background-color: #ff4500;
+}
+
+.share-button.instagram {
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5851db,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d
+  );
 }
