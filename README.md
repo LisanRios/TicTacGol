@@ -1,4 +1,4 @@
-# TicTacGol - ¿Adivina el Futbolista? 🎮⚽
+# TicTacGol - ¿Adivinaras al Futbolista? 🎮⚽
 
 [¡Juega Ahora!](https://lisanrios.github.io/TicTacGol/)
 

@@ -500,13 +500,34 @@ button:active {
 
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
-  .modal-content {
-      width: 95%;
-      padding: var(--spacing-md);
+  .attempts {
+    overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
   }
 
-  .rules-content {
-      padding-right: var(--spacing-sm);
+  .attempt {
+    grid-template-columns: repeat(4, 1fr); /* Reduce el número de columnas en la tabla */
+  }
+
+  .attribute {
+    font-size: 0.75rem; /* Ajusta el tamaño de la fuente para que sea más pequeño */
+    padding: var(--spacing-xs); /* Reduce el padding */
+  }
+
+  .stat-card {
+    padding: var(--spacing-sm); /* Ajusta el padding de las tarjetas de estadísticas */
+  }
+
+  .game-buttons {
+    flex-direction: column; /* Cambia la dirección a columna para botones en móviles */
+    gap: var(--spacing-xs); /* Espaciado entre botones */
+  }
+
+  #playerInput {
+    font-size: 0.9rem; /* Ajusta el tamaño de la fuente del input */
+  }
+
+  button {
+    min-width: 100%; /* Botones ocupan el ancho completo en móviles */
   }
 }
 

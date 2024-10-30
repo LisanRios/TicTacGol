@@ -551,6 +551,28 @@
   },
   {
     "Ranking": 26,
+    "Nombre": "Sergio \"Kun\" Agüero",
+    "": "",
+    "Nacionalidad": "Argentina",
+    "Confederación": "CONMEBOL",
+    "Media": 90,
+    "Posición": "ST, CF",
+    "Skills": 4,
+    "Ritmo/Salto": 85,
+    "Tiro/Manos": 90,
+    "Pase/Pies": 77,
+    "Regate/Reflejos": 90,
+    "Defensa/Velocidad": 29,
+    "Físico/Posición": 74,
+    "TOT": 449,
+    "Altura (cm)": 173,
+    "Peso (kg)": 70,
+    "Trayectoria": "Independiente, Atlético Madrid, Manchester City, Barcelona",
+    "Inicio": 2005,
+    "Fin": 2021
+  },
+  {
+    "Ranking": 27,
     "Nombre": "Javier Zanetti",
     "": "",
     "Nacionalidad": "Argentina",
@@ -572,7 +594,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 27,
+    "Ranking": 28,
     "Nombre": "José Moreno",
     "": "",
     "Nacionalidad": "Argentina",
@@ -594,7 +616,7 @@
     "Fin": 2000
   },
   {
-    "Ranking": 28,
+    "Ranking": 29,
     "Nombre": "Daniel Passarella",
     "": "",
     "Nacionalidad": "Argentina",
@@ -616,7 +638,7 @@
     "Fin": 1989
   },
   {
-    "Ranking": 29,
+    "Ranking": 30,
     "Nombre": "Carlos Tévez",
     "": "",
     "Nacionalidad": "Argentina",
@@ -638,7 +660,7 @@
     "Fin": 2021
   },
   {
-    "Ranking": 30,
+    "Ranking": 31,
     "Nombre": "Javier Mascherano",
     "": "",
     "Nacionalidad": "Argentina",
@@ -660,7 +682,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 31,
+    "Ranking": 32,
     "Nombre": "Diego Milito",
     "": "",
     "Nacionalidad": "Argentina",
@@ -682,7 +704,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 32,
+    "Ranking": 33,
     "Nombre": "Juan Román Riquelme",
     "": "",
     "Nacionalidad": "Argentina",
@@ -704,7 +726,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 33,
+    "Ranking": 34,
     "Nombre": "Gonzalo Higuaín",
     "": "",
     "Nacionalidad": "Argentina",
@@ -726,7 +748,7 @@
     "Fin": 2023
   },
   {
-    "Ranking": 34,
+    "Ranking": 35,
     "Nombre": "Juan Sebastián Verón",
     "": "",
     "Nacionalidad": "Argentina",
@@ -748,7 +770,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 35,
+    "Ranking": 36,
     "Nombre": "Hernán Crespo",
     "": "",
     "Nacionalidad": "Argentina",
@@ -770,7 +792,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 36,
+    "Ranking": 37,
     "Nombre": "Harry Kewell",
     "": "",
     "Nacionalidad": "Australia",
@@ -792,7 +814,7 @@
     "Fin": 2012
   },
   {
-    "Ranking": 37,
+    "Ranking": 38,
     "Nombre": "Tim Cahill",
     "": "",
     "Nacionalidad": "Australia",
@@ -814,7 +836,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 38,
+    "Ranking": 39,
     "Nombre": "Matthias Sindelar",
     "": "",
     "Nacionalidad": "Austria",
@@ -836,7 +858,7 @@
     "Fin": 1939
   },
   {
-    "Ranking": 39,
+    "Ranking": 40,
     "Nombre": "Jan Ceulemans",
     "": "",
     "Nacionalidad": "Bélgica",
@@ -858,7 +880,7 @@
     "Fin": 1992
   },
   {
-    "Ranking": 40,
+    "Ranking": 41,
     "Nombre": "Eden Hazard",
     "": "",
     "Nacionalidad": "Bélgica",
@@ -880,7 +902,7 @@
     "Fin": 2023
   },
   {
-    "Ranking": 41,
+    "Ranking": 42,
     "Nombre": "Vincent Kompany",
     "": "",
     "Nacionalidad": "Bélgica",
@@ -902,7 +924,7 @@
     "Fin": 2020
   },
   {
-    "Ranking": 42,
+    "Ranking": 43,
     "Nombre": "Daniel Van Buyten",
     "": "",
     "Nacionalidad": "Bélgica",
@@ -924,7 +946,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 43,
+    "Ranking": 44,
     "Nombre": "Pelé",
     "": "",
     "Nacionalidad": "Brasil",
@@ -946,7 +968,7 @@
     "Fin": 1977
   },
   {
-    "Ranking": 44,
+    "Ranking": 45,
     "Nombre": "Ronaldo Nazario",
     "": "",
     "Nacionalidad": "Brasil",
@@ -968,7 +990,7 @@
     "Fin": 2011
   },
   {
-    "Ranking": 45,
+    "Ranking": 46,
     "Nombre": "Ronaldinho",
     "": "",
     "Nacionalidad": "Brasil",
@@ -990,7 +1012,7 @@
     "Fin": 2015
   },
   {
-    "Ranking": 46,
+    "Ranking": 47,
     "Nombre": "Romário",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1012,7 +1034,7 @@
     "Fin": 2007
   },
   {
-    "Ranking": 47,
+    "Ranking": 48,
     "Nombre": "Garrincha",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1034,7 +1056,7 @@
     "Fin": 1972
   },
   {
-    "Ranking": 48,
+    "Ranking": 49,
     "Nombre": "Cafu",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1056,7 +1078,7 @@
     "Fin": 2008
   },
   {
-    "Ranking": 49,
+    "Ranking": 50,
     "Nombre": "Zico",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1078,7 +1100,7 @@
     "Fin": 1992
   },
   {
-    "Ranking": 50,
+    "Ranking": 51,
     "Nombre": "Carlos Alberto",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1100,7 +1122,7 @@
     "Fin": 1982
   },
   {
-    "Ranking": 51,
+    "Ranking": 52,
     "Nombre": "Rivaldo",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1122,7 +1144,7 @@
     "Fin": 2015
   },
   {
-    "Ranking": 52,
+    "Ranking": 53,
     "Nombre": "Roberto Carlos",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1144,7 +1166,7 @@
     "Fin": 2008
   },
   {
-    "Ranking": 53,
+    "Ranking": 54,
     "Nombre": "Roberto Rivelino",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1166,7 +1188,7 @@
     "Fin": 1981
   },
   {
-    "Ranking": 54,
+    "Ranking": 55,
     "Nombre": "Ricardo Kaká",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1188,7 +1210,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 55,
+    "Ranking": 56,
     "Nombre": "Lúcio",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1210,7 +1232,7 @@
     "Fin": 2015
   },
   {
-    "Ranking": 56,
+    "Ranking": 57,
     "Nombre": "Sócrates",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1232,7 +1254,7 @@
     "Fin": 1989
   },
   {
-    "Ranking": 57,
+    "Ranking": 58,
     "Nombre": "Jairzinho",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1254,7 +1276,7 @@
     "Fin": 1982
   },
   {
-    "Ranking": 58,
+    "Ranking": 59,
     "Nombre": "Djalma Santos",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1276,7 +1298,7 @@
     "Fin": 1972
   },
   {
-    "Ranking": 59,
+    "Ranking": 60,
     "Nombre": "Maicon Douglas Sisenando",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1298,7 +1320,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 60,
+    "Ranking": 61,
     "Nombre": "Dida",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1320,7 +1342,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 61,
+    "Ranking": 62,
     "Nombre": "Didi",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1342,7 +1364,7 @@
     "Fin": 1966
   },
   {
-    "Ranking": 62,
+    "Ranking": 63,
     "Nombre": "Dani Alves",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1364,7 +1386,7 @@
     "Fin": 2023
   },
   {
-    "Ranking": 63,
+    "Ranking": 64,
     "Nombre": "Robinho",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1386,7 +1408,7 @@
     "Fin": 2020
   },
   {
-    "Ranking": 64,
+    "Ranking": 65,
     "Nombre": "Zé Roberto",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1408,7 +1430,7 @@
     "Fin": 2015
   },
   {
-    "Ranking": 65,
+    "Ranking": 66,
     "Nombre": "Juninho Pernambucano",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1430,7 +1452,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 66,
+    "Ranking": 67,
     "Nombre": "Ramires",
     "": "",
     "Nacionalidad": "Brasil",
@@ -1452,7 +1474,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 67,
+    "Ranking": 68,
     "Nombre": "Hristo Stoichkov",
     "": "",
     "Nacionalidad": "Bulgaria",
@@ -1474,7 +1496,7 @@
     "Fin": 2003
   },
   {
-    "Ranking": 68,
+    "Ranking": 69,
     "Nombre": "Dimitar Berbatov",
     "": "",
     "Nacionalidad": "Bulgaria",
@@ -1496,7 +1518,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 69,
+    "Ranking": 70,
     "Nombre": "Samuel Eto'o",
     "": "",
     "Nacionalidad": "Camerún",
@@ -1518,7 +1540,7 @@
     "Fin": 2019
   },
   {
-    "Ranking": 70,
+    "Ranking": 71,
     "Nombre": "Roger Milla",
     "": "",
     "Nacionalidad": "Camerún",
@@ -1540,7 +1562,7 @@
     "Fin": 1996
   },
   {
-    "Ranking": 71,
+    "Ranking": 72,
     "Nombre": "Elías Figueroa",
     "": "",
     "Nacionalidad": "Chile",
@@ -1562,7 +1584,7 @@
     "Fin": 1980
   },
   {
-    "Ranking": 72,
+    "Ranking": 73,
     "Nombre": "Iván Zamorano",
     "": "",
     "Nacionalidad": "Chile",
@@ -1584,7 +1606,7 @@
     "Fin": 2003
   },
   {
-    "Ranking": 73,
+    "Ranking": 74,
     "Nombre": "Carlos Valderrama",
     "": "",
     "Nacionalidad": "Colombia",
@@ -1606,7 +1628,7 @@
     "Fin": 2001
   },
   {
-    "Ranking": 74,
+    "Ranking": 75,
     "Nombre": "Iván Córdoba",
     "": "",
     "Nacionalidad": "Colombia",
@@ -1628,7 +1650,7 @@
     "Fin": 2023
   },
   {
-    "Ranking": 75,
+    "Ranking": 76,
     "Nombre": "Ji-Sung Park",
     "": "",
     "Nacionalidad": "Corea del Sur",
@@ -1650,7 +1672,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 76,
+    "Ranking": 77,
     "Nombre": "Didier Drogba",
     "": "",
     "Nacionalidad": "Costa de Marfil",
@@ -1672,7 +1694,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 77,
+    "Ranking": 78,
     "Nombre": "Yaya Touré",
     "": "",
     "Nacionalidad": "Costa de Marfil",
@@ -1694,7 +1716,7 @@
     "Fin": 1997
   },
   {
-    "Ranking": 78,
+    "Ranking": 79,
     "Nombre": "Davor Šuker",
     "": "",
     "Nacionalidad": "Croacia",
@@ -1716,7 +1738,7 @@
     "Fin": 2002
   },
   {
-    "Ranking": 79,
+    "Ranking": 80,
     "Nombre": "Peter Schmeichel",
     "": "",
     "Nacionalidad": "Dinamarca",
@@ -1738,7 +1760,7 @@
     "Fin": 2003
   },
   {
-    "Ranking": 80,
+    "Ranking": 81,
     "Nombre": "Brian Laudrup",
     "": "",
     "Nacionalidad": "Dinamarca",
@@ -1760,7 +1782,7 @@
     "Fin": 2005
   },
   {
-    "Ranking": 81,
+    "Ranking": 82,
     "Nombre": "Michael Laudrup",
     "": "",
     "Nacionalidad": "Dinamarca",
@@ -1782,7 +1804,7 @@
     "Fin": 1998
   },
   {
-    "Ranking": 82,
+    "Ranking": 83,
     "Nombre": "Kenny Dalglish",
     "": "",
     "Nacionalidad": "Escocia",
@@ -1804,7 +1826,7 @@
     "Fin": 1990
   },
   {
-    "Ranking": 83,
+    "Ranking": 84,
     "Nombre": "Denis Law",
     "": "",
     "Nacionalidad": "Escocia",
@@ -1826,7 +1848,7 @@
     "Fin": 1974
   },
   {
-    "Ranking": 84,
+    "Ranking": 85,
     "Nombre": "Marek Hamšík",
     "": "",
     "Nacionalidad": "Eslovaquia",
@@ -1848,7 +1870,7 @@
     "Fin": 2020
   },
   {
-    "Ranking": 85,
+    "Ranking": 86,
     "Nombre": "Raúl González",
     "": "",
     "Nacionalidad": "España",
@@ -1870,7 +1892,7 @@
     "Fin": 2015
   },
   {
-    "Ranking": 86,
+    "Ranking": 87,
     "Nombre": "Paco Gento",
     "": "",
     "Nacionalidad": "España",
@@ -1892,7 +1914,7 @@
     "Fin": 1971
   },
   {
-    "Ranking": 87,
+    "Ranking": 88,
     "Nombre": "Andrés Iniesta",
     "": "",
     "Nacionalidad": "España",
@@ -1914,7 +1936,7 @@
     "Fin": 2024
   },
   {
-    "Ranking": 88,
+    "Ranking": 89,
     "Nombre": "Xavi Hernández",
     "": "",
     "Nacionalidad": "España",
@@ -1936,7 +1958,7 @@
     "Fin": 2019
   },
   {
-    "Ranking": 89,
+    "Ranking": 90,
     "Nombre": "Iker Casillas",
     "": "",
     "Nacionalidad": "España",
@@ -1958,7 +1980,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 90,
+    "Ranking": 91,
     "Nombre": "David Silva",
     "": "",
     "Nacionalidad": "España",
@@ -1980,7 +2002,7 @@
     "Fin": 2023
   },
   {
-    "Ranking": 91,
+    "Ranking": 92,
     "Nombre": "Cesc Fàbregas",
     "": "",
     "Nacionalidad": "España",
@@ -2002,7 +2024,7 @@
     "Fin": 2023
   },
   {
-    "Ranking": 92,
+    "Ranking": 93,
     "Nombre": "David Villa",
     "": "",
     "Nacionalidad": "España",
@@ -2024,7 +2046,7 @@
     "Fin": 2020
   },
   {
-    "Ranking": 93,
+    "Ranking": 94,
     "Nombre": "Víctor Valdés",
     "": "",
     "Nacionalidad": "España",
@@ -2046,7 +2068,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 94,
+    "Ranking": 95,
     "Nombre": "Fernando Morientes",
     "": "",
     "Nacionalidad": "España",
@@ -2068,7 +2090,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 95,
+    "Ranking": 96,
     "Nombre": "Carles Puyol",
     "": "",
     "Nacionalidad": "España",
@@ -2090,7 +2112,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 96,
+    "Ranking": 97,
     "Nombre": "Emilio Butragueño",
     "": "",
     "Nacionalidad": "España",
@@ -2112,7 +2134,7 @@
     "Fin": 1995
   },
   {
-    "Ranking": 97,
+    "Ranking": 98,
     "Nombre": "Luis Suárez (ESP)",
     "": "",
     "Nacionalidad": "España",
@@ -2134,7 +2156,7 @@
     "Fin": 2020
   },
   {
-    "Ranking": 98,
+    "Ranking": 99,
     "Nombre": "Fernando Hierro",
     "": "",
     "Nacionalidad": "España",
@@ -2156,7 +2178,7 @@
     "Fin": 2015
   },
   {
-    "Ranking": 99,
+    "Ranking": 100,
     "Nombre": "Fernando Torres",
     "": "",
     "Nacionalidad": "España",
@@ -2178,7 +2200,7 @@
     "Fin": 2019
   },
   {
-    "Ranking": 100,
+    "Ranking": 101,
     "Nombre": "Xabi Alonso",
     "": "",
     "Nacionalidad": "España",
@@ -2200,7 +2222,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 101,
+    "Ranking": 102,
     "Nombre": "Guti (José María Gutiérrez)",
     "": "",
     "Nacionalidad": "España",
@@ -2222,7 +2244,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 102,
+    "Ranking": 103,
     "Nombre": "Joan Capdevila",
     "": "",
     "Nacionalidad": "España",
@@ -2244,7 +2266,7 @@
     "Fin": 2013
   },
   {
-    "Ranking": 103,
+    "Ranking": 104,
     "Nombre": "Pep Guardiola",
     "": "",
     "Nacionalidad": "España",
@@ -2266,7 +2288,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 104,
+    "Ranking": 105,
     "Nombre": "Landon Donovan",
     "": "",
     "Nacionalidad": "Estados Unidos",
@@ -2288,7 +2310,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 105,
+    "Ranking": 106,
     "Nombre": "Alexi Lalas",
     "": "",
     "Nacionalidad": "Estados Unidos",
@@ -2310,7 +2332,7 @@
     "Fin": 1998
   },
   {
-    "Ranking": 106,
+    "Ranking": 107,
     "Nombre": "Clint Dempsey",
     "": "",
     "Nacionalidad": "Estados Unidos",
@@ -2332,7 +2354,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 107,
+    "Ranking": 108,
     "Nombre": "DaMarcus Beasley",
     "": "",
     "Nacionalidad": "Estados Unidos",
@@ -2354,7 +2376,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 108,
+    "Ranking": 109,
     "Nombre": "Tim Howard",
     "": "",
     "Nacionalidad": "Estados Unidos",
@@ -2376,7 +2398,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 109,
+    "Ranking": 110,
     "Nombre": "Jari Litmanen",
     "": "",
     "Nacionalidad": "Finlandia",
@@ -2398,7 +2420,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 110,
+    "Ranking": 111,
     "Nombre": "Zinedine Zidane",
     "": "",
     "Nacionalidad": "Francia",
@@ -2420,7 +2442,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 111,
+    "Ranking": 112,
     "Nombre": "Michel Platini",
     "": "",
     "Nacionalidad": "Francia",
@@ -2442,7 +2464,7 @@
     "Fin": 1987
   },
   {
-    "Ranking": 112,
+    "Ranking": 113,
     "Nombre": "Thierry Henry",
     "": "",
     "Nacionalidad": "Francia",
@@ -2464,7 +2486,7 @@
     "Fin": 2012
   },
   {
-    "Ranking": 113,
+    "Ranking": 114,
     "Nombre": "Just Fontaine",
     "": "",
     "Nacionalidad": "Francia",
@@ -2486,7 +2508,7 @@
     "Fin": 1962
   },
   {
-    "Ranking": 114,
+    "Ranking": 115,
     "Nombre": "Lilian Thuram",
     "": "",
     "Nacionalidad": "Francia",
@@ -2508,7 +2530,7 @@
     "Fin": 2008
   },
   {
-    "Ranking": 115,
+    "Ranking": 116,
     "Nombre": "Eric Cantona",
     "": "",
     "Nacionalidad": "Francia",
@@ -2530,7 +2552,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 116,
+    "Ranking": 117,
     "Nombre": "David Ginola",
     "": "",
     "Nacionalidad": "Francia",
@@ -2552,7 +2574,7 @@
     "Fin": 2002
   },
   {
-    "Ranking": 117,
+    "Ranking": 118,
     "Nombre": "Didier Deschamps",
     "": "",
     "Nacionalidad": "Francia",
@@ -2574,7 +2596,7 @@
     "Fin": 2001
   },
   {
-    "Ranking": 118,
+    "Ranking": 119,
     "Nombre": "Jean-Pierre Papin",
     "": "",
     "Nacionalidad": "Francia",
@@ -2596,7 +2618,7 @@
     "Fin": 1997
   },
   {
-    "Ranking": 119,
+    "Ranking": 120,
     "Nombre": "Raymond Kopa",
     "": "",
     "Nacionalidad": "Francia",
@@ -2618,7 +2640,7 @@
     "Fin": 1962
   },
   {
-    "Ranking": 120,
+    "Ranking": 121,
     "Nombre": "Franck Ribéry",
     "": "",
     "Nacionalidad": "Francia",
@@ -2640,7 +2662,7 @@
     "Fin": 2022
   },
   {
-    "Ranking": 121,
+    "Ranking": 122,
     "Nombre": "Patrick Vieira",
     "": "",
     "Nacionalidad": "Francia",
@@ -2662,7 +2684,7 @@
     "Fin": 2011
   },
   {
-    "Ranking": 122,
+    "Ranking": 123,
     "Nombre": "Fabien Barthez",
     "": "",
     "Nacionalidad": "Francia",
@@ -2684,7 +2706,7 @@
     "Fin": 2007
   },
   {
-    "Ranking": 123,
+    "Ranking": 124,
     "Nombre": "Bixente Lizarazu",
     "": "",
     "Nacionalidad": "Francia",
@@ -2706,7 +2728,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 124,
+    "Ranking": 125,
     "Nombre": "Marcel Desailly",
     "": "",
     "Nacionalidad": "Francia",
@@ -2728,7 +2750,7 @@
     "Fin": 2000
   },
   {
-    "Ranking": 125,
+    "Ranking": 126,
     "Nombre": "Laurent Blanc",
     "": "",
     "Nacionalidad": "Francia",
@@ -2750,7 +2772,7 @@
     "Fin": 2000
   },
   {
-    "Ranking": 126,
+    "Ranking": 127,
     "Nombre": "Patrice Evra",
     "": "",
     "Nacionalidad": "Francia",
@@ -2772,7 +2794,7 @@
     "Fin": 2019
   },
   {
-    "Ranking": 127,
+    "Ranking": 128,
     "Nombre": "Robert Pirès",
     "": "",
     "Nacionalidad": "Francia",
@@ -2794,7 +2816,7 @@
     "Fin": 2011
   },
   {
-    "Ranking": 128,
+    "Ranking": 129,
     "Nombre": "David Trezeguet",
     "": "",
     "Nacionalidad": "Francia",
@@ -2816,7 +2838,7 @@
     "Fin": 2010
   },
   {
-    "Ranking": 129,
+    "Ranking": 130,
     "Nombre": "Claude Makélélé",
     "": "",
     "Nacionalidad": "Francia",
@@ -2838,7 +2860,7 @@
     "Fin": 2008
   },
   {
-    "Ranking": 130,
+    "Ranking": 131,
     "Nombre": "Emmanuel Petit",
     "": "",
     "Nacionalidad": "Francia",
@@ -2860,7 +2882,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 131,
+    "Ranking": 132,
     "Nombre": "Blaise Matuidi",
     "": "",
     "Nacionalidad": "Francia",
@@ -2882,7 +2904,7 @@
     "Fin": 2021
   },
   {
-    "Ranking": 132,
+    "Ranking": 133,
     "Nombre": "Ludovic Giuly",
     "": "",
     "Nacionalidad": "Francia",
@@ -2904,7 +2926,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 133,
+    "Ranking": 134,
     "Nombre": "Sidney Govou",
     "": "",
     "Nacionalidad": "Francia",
@@ -2926,7 +2948,7 @@
     "Fin": 2010
   },
   {
-    "Ranking": 134,
+    "Ranking": 135,
     "Nombre": "Gareth Bale",
     "": "",
     "Nacionalidad": "Gales",
@@ -2948,7 +2970,7 @@
     "Fin": 2023
   },
   {
-    "Ranking": 135,
+    "Ranking": 136,
     "Nombre": "Ian Rush",
     "": "",
     "Nacionalidad": "Gales",
@@ -2970,7 +2992,7 @@
     "Fin": 1996
   },
   {
-    "Ranking": 136,
+    "Ranking": 137,
     "Nombre": "Kakhaber Kaladze",
     "": "",
     "Nacionalidad": "Georgia",
@@ -2992,7 +3014,7 @@
     "Fin": 2012
   },
   {
-    "Ranking": 137,
+    "Ranking": 138,
     "Nombre": "Abedi Pelé",
     "": "",
     "Nacionalidad": "Ghana",
@@ -3014,7 +3036,7 @@
     "Fin": 1998
   },
   {
-    "Ranking": 138,
+    "Ranking": 139,
     "Nombre": "Michaël Essien",
     "": "",
     "Nacionalidad": "Ghana",
@@ -3036,7 +3058,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 139,
+    "Ranking": 140,
     "Nombre": "Theodoros Zagorakis",
     "": "",
     "Nacionalidad": "Grecia",
@@ -3058,7 +3080,7 @@
     "Fin": 2007
   },
   {
-    "Ranking": 140,
+    "Ranking": 141,
     "Nombre": "Georgios Karagounis",
     "": "",
     "Nacionalidad": "Grecia",
@@ -3080,7 +3102,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 141,
+    "Ranking": 142,
     "Nombre": "Johan Cruyff",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3102,7 +3124,7 @@
     "Fin": 1984
   },
   {
-    "Ranking": 142,
+    "Ranking": 143,
     "Nombre": "Marco van Basten",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3124,7 +3146,7 @@
     "Fin": 1995
   },
   {
-    "Ranking": 143,
+    "Ranking": 144,
     "Nombre": "Dennis Bergkamp",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3146,7 +3168,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 144,
+    "Ranking": 145,
     "Nombre": "Ruud Gullit",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3168,7 +3190,7 @@
     "Fin": 1998
   },
   {
-    "Ranking": 145,
+    "Ranking": 146,
     "Nombre": "Ruud van Nistelrooy",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3190,7 +3212,7 @@
     "Fin": 2012
   },
   {
-    "Ranking": 146,
+    "Ranking": 147,
     "Nombre": "Rob Rensenbrink",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3212,7 +3234,7 @@
     "Fin": 1984
   },
   {
-    "Ranking": 147,
+    "Ranking": 148,
     "Nombre": "Johan Neeskens",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3234,7 +3256,7 @@
     "Fin": 1984
   },
   {
-    "Ranking": 148,
+    "Ranking": 149,
     "Nombre": "Arjen Robben",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3256,7 +3278,7 @@
     "Fin": 2021
   },
   {
-    "Ranking": 149,
+    "Ranking": 150,
     "Nombre": "Wesley Sneijder",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3278,7 +3300,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 150,
+    "Ranking": 151,
     "Nombre": "Robin van Persie",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3300,7 +3322,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 151,
+    "Ranking": 152,
     "Nombre": "Edwin van der Sar",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3322,7 +3344,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 152,
+    "Ranking": 153,
     "Nombre": "Edgar Davids",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3344,7 +3366,7 @@
     "Fin": 2009
   },
   {
-    "Ranking": 153,
+    "Ranking": 154,
     "Nombre": "Marc Overmars",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3366,7 +3388,7 @@
     "Fin": 2004
   },
   {
-    "Ranking": 154,
+    "Ranking": 155,
     "Nombre": "Ronald Koeman",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3388,7 +3410,7 @@
     "Fin": 1997
   },
   {
-    "Ranking": 155,
+    "Ranking": 156,
     "Nombre": "Mark van Bommel",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3410,7 +3432,7 @@
     "Fin": 2013
   },
   {
-    "Ranking": 156,
+    "Ranking": 157,
     "Nombre": "Clarence Seedorf",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3432,7 +3454,7 @@
     "Fin": 2012
   },
   {
-    "Ranking": 157,
+    "Ranking": 158,
     "Nombre": "Patrick Kluivert",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3454,7 +3476,7 @@
     "Fin": 2008
   },
   {
-    "Ranking": 158,
+    "Ranking": 159,
     "Nombre": "Jaap Stam",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3476,7 +3498,7 @@
     "Fin": 2007
   },
   {
-    "Ranking": 159,
+    "Ranking": 160,
     "Nombre": "Frank Rijkaard",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3498,7 +3520,7 @@
     "Fin": 1999
   },
   {
-    "Ranking": 160,
+    "Ranking": 161,
     "Nombre": "Dirk Kuyt",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3520,7 +3542,7 @@
     "Fin": 2015
   },
   {
-    "Ranking": 161,
+    "Ranking": 162,
     "Nombre": "Frank de Boer",
     "": "",
     "Nacionalidad": "Holanda",
@@ -3542,7 +3564,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 162,
+    "Ranking": 163,
     "Nombre": "Ferenc Puskás",
     "": "",
     "Nacionalidad": "Hungría",
@@ -3564,7 +3586,7 @@
     "Fin": 1966
   },
   {
-    "Ranking": 163,
+    "Ranking": 164,
     "Nombre": "László Kubala",
     "": "",
     "Nacionalidad": "Hungría",
@@ -3586,7 +3608,7 @@
     "Fin": 1966
   },
   {
-    "Ranking": 164,
+    "Ranking": 165,
     "Nombre": "Bobby Charlton",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3608,7 +3630,7 @@
     "Fin": 1970
   },
   {
-    "Ranking": 165,
+    "Ranking": 166,
     "Nombre": "Sir Stanley Matthews",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3630,7 +3652,7 @@
     "Fin": 1965
   },
   {
-    "Ranking": 166,
+    "Ranking": 167,
     "Nombre": "Gordon Banks",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3652,7 +3674,7 @@
     "Fin": 1978
   },
   {
-    "Ranking": 167,
+    "Ranking": 168,
     "Nombre": "Bobby Moore",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3674,7 +3696,7 @@
     "Fin": 1978
   },
   {
-    "Ranking": 168,
+    "Ranking": 169,
     "Nombre": "Alan Shearer",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3696,7 +3718,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 169,
+    "Ranking": 170,
     "Nombre": "Gary Lineker",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3718,7 +3740,7 @@
     "Fin": 1992
   },
   {
-    "Ranking": 170,
+    "Ranking": 171,
     "Nombre": "Kevin Keegan",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3740,7 +3762,7 @@
     "Fin": 1985
   },
   {
-    "Ranking": 171,
+    "Ranking": 172,
     "Nombre": "Wayne Rooney",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3762,7 +3784,7 @@
     "Fin": 2021
   },
   {
-    "Ranking": 172,
+    "Ranking": 173,
     "Nombre": "John Terry",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3784,7 +3806,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 173,
+    "Ranking": 174,
     "Nombre": "Steven Gerrard",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3806,7 +3828,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 174,
+    "Ranking": 175,
     "Nombre": "Rio Ferdinand",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3828,7 +3850,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 175,
+    "Ranking": 176,
     "Nombre": "Michael Owen",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3850,7 +3872,7 @@
     "Fin": 2013
   },
   {
-    "Ranking": 176,
+    "Ranking": 177,
     "Nombre": "Paul Scholes",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3872,7 +3894,7 @@
     "Fin": 2013
   },
   {
-    "Ranking": 177,
+    "Ranking": 178,
     "Nombre": "David Beckham",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3894,7 +3916,7 @@
     "Fin": 2013
   },
   {
-    "Ranking": 178,
+    "Ranking": 179,
     "Nombre": "David Seaman",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3916,7 +3938,7 @@
     "Fin": 2004
   },
   {
-    "Ranking": 179,
+    "Ranking": 180,
     "Nombre": "Joe Cole",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3938,7 +3960,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 180,
+    "Ranking": 181,
     "Nombre": "Frank Lampard",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3960,7 +3982,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 181,
+    "Ranking": 182,
     "Nombre": "Steve McManaman",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -3982,7 +4004,7 @@
     "Fin": 2005
   },
   {
-    "Ranking": 182,
+    "Ranking": 183,
     "Nombre": "Ian Wright",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -4004,7 +4026,7 @@
     "Fin": 2000
   },
   {
-    "Ranking": 183,
+    "Ranking": 184,
     "Nombre": "John Barnes",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -4026,7 +4048,7 @@
     "Fin": 1999
   },
   {
-    "Ranking": 184,
+    "Ranking": 185,
     "Nombre": "Ashley Cole",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -4048,7 +4070,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 185,
+    "Ranking": 186,
     "Nombre": "Ledley King",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -4070,7 +4092,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 186,
+    "Ranking": 187,
     "Nombre": "Jamie Carragher",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -4092,7 +4114,7 @@
     "Fin": 2013
   },
   {
-    "Ranking": 187,
+    "Ranking": 188,
     "Nombre": "Gary Neville",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -4114,7 +4136,7 @@
     "Fin": 2011
   },
   {
-    "Ranking": 188,
+    "Ranking": 189,
     "Nombre": "Robbie Fowler",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -4136,7 +4158,7 @@
     "Fin": 2009
   },
   {
-    "Ranking": 189,
+    "Ranking": 190,
     "Nombre": "Teddy Sheringham",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -4158,7 +4180,7 @@
     "Fin": 2008
   },
   {
-    "Ranking": 190,
+    "Ranking": 191,
     "Nombre": "Sol Campbell",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -4180,7 +4202,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 191,
+    "Ranking": 192,
     "Nombre": "Peter Crouch",
     "": "",
     "Nacionalidad": "Inglaterra",
@@ -4202,7 +4224,7 @@
     "Fin": 2019
   },
   {
-    "Ranking": 192,
+    "Ranking": 193,
     "Nombre": "Robbie Keane",
     "": "",
     "Nacionalidad": "Irlanda",
@@ -4224,7 +4246,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 193,
+    "Ranking": 194,
     "Nombre": "Roy Keane",
     "": "",
     "Nacionalidad": "Irlanda",
@@ -4246,7 +4268,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 194,
+    "Ranking": 195,
     "Nombre": "George Best",
     "": "",
     "Nacionalidad": "Irlanda del Norte",
@@ -4268,7 +4290,7 @@
     "Fin": 1984
   },
   {
-    "Ranking": 195,
+    "Ranking": 196,
     "Nombre": "Paolo Maldini",
     "": "",
     "Nacionalidad": "Italia",
@@ -4290,7 +4312,7 @@
     "Fin": 2009
   },
   {
-    "Ranking": 196,
+    "Ranking": 197,
     "Nombre": "Gianluigi Buffon",
     "": "",
     "Nacionalidad": "Italia",
@@ -4312,7 +4334,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 197,
+    "Ranking": 198,
     "Nombre": "Roberto Baggio",
     "": "",
     "Nacionalidad": "Italia",
@@ -4334,7 +4356,7 @@
     "Fin": 2004
   },
   {
-    "Ranking": 198,
+    "Ranking": 199,
     "Nombre": "Franco Baresi",
     "": "",
     "Nacionalidad": "Italia",
@@ -4356,7 +4378,7 @@
     "Fin": 1998
   },
   {
-    "Ranking": 199,
+    "Ranking": 200,
     "Nombre": "Giuseppe Meazza",
     "": "",
     "Nacionalidad": "Italia",
@@ -4378,7 +4400,7 @@
     "Fin": 1947
   },
   {
-    "Ranking": 200,
+    "Ranking": 201,
     "Nombre": "Andrea Pirlo",
     "": "",
     "Nacionalidad": "Italia",
@@ -4400,7 +4422,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 201,
+    "Ranking": 202,
     "Nombre": "Alessandro Del Piero",
     "": "",
     "Nacionalidad": "Italia",
@@ -4422,7 +4444,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 202,
+    "Ranking": 203,
     "Nombre": "Dino Zoff",
     "": "",
     "Nacionalidad": "Italia",
@@ -4444,7 +4466,7 @@
     "Fin": 1983
   },
   {
-    "Ranking": 203,
+    "Ranking": 204,
     "Nombre": "Giorgio Chiellini",
     "": "",
     "Nacionalidad": "Italia",
@@ -4466,7 +4488,7 @@
     "Fin": 2024
   },
   {
-    "Ranking": 204,
+    "Ranking": 205,
     "Nombre": "Alessandro Nesta",
     "": "",
     "Nacionalidad": "Italia",
@@ -4488,7 +4510,7 @@
     "Fin": 2014
   },
   {
-    "Ranking": 205,
+    "Ranking": 206,
     "Nombre": "Fabio Cannavaro",
     "": "",
     "Nacionalidad": "Italia",
@@ -4510,7 +4532,7 @@
     "Fin": 2011
   },
   {
-    "Ranking": 206,
+    "Ranking": 207,
     "Nombre": "Gianluca Vialli",
     "": "",
     "Nacionalidad": "Italia",
@@ -4532,7 +4554,7 @@
     "Fin": 2005
   },
   {
-    "Ranking": 207,
+    "Ranking": 208,
     "Nombre": "Giuseppe Bergomi",
     "": "",
     "Nacionalidad": "Italia",
@@ -4554,7 +4576,7 @@
     "Fin": 1998
   },
   {
-    "Ranking": 208,
+    "Ranking": 209,
     "Nombre": "Paolo Rossi",
     "": "",
     "Nacionalidad": "Italia",
@@ -4576,7 +4598,7 @@
     "Fin": 1986
   },
   {
-    "Ranking": 209,
+    "Ranking": 210,
     "Nombre": "Gianni Rivera",
     "": "",
     "Nacionalidad": "Italia",
@@ -4598,7 +4620,7 @@
     "Fin": 1979
   },
   {
-    "Ranking": 210,
+    "Ranking": 211,
     "Nombre": "Francesco Totti",
     "": "",
     "Nacionalidad": "Italia",
@@ -4620,7 +4642,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 211,
+    "Ranking": 212,
     "Nombre": "Antonio Di Natale",
     "": "",
     "Nacionalidad": "Italia",
@@ -4642,7 +4664,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 212,
+    "Ranking": 213,
     "Nombre": "Christian Vieri",
     "": "",
     "Nacionalidad": "Italia",
@@ -4664,7 +4686,7 @@
     "Fin": 2005
   },
   {
-    "Ranking": 213,
+    "Ranking": 214,
     "Nombre": "Daniele De Rossi",
     "": "",
     "Nacionalidad": "Italia",
@@ -4686,7 +4708,7 @@
     "Fin": 2020
   },
   {
-    "Ranking": 214,
+    "Ranking": 215,
     "Nombre": "Claudio Marchisio",
     "": "",
     "Nacionalidad": "Italia",
@@ -4708,7 +4730,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 215,
+    "Ranking": 216,
     "Nombre": "Gianfranco Zola",
     "": "",
     "Nacionalidad": "Italia",
@@ -4730,7 +4752,7 @@
     "Fin": 2005
   },
   {
-    "Ranking": 216,
+    "Ranking": 217,
     "Nombre": "Luca Toni",
     "": "",
     "Nacionalidad": "Italia",
@@ -4752,7 +4774,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 217,
+    "Ranking": 218,
     "Nombre": "Gennaro Gattuso",
     "": "",
     "Nacionalidad": "Italia",
@@ -4774,7 +4796,7 @@
     "Fin": 2012
   },
   {
-    "Ranking": 218,
+    "Ranking": 219,
     "Nombre": "Gianluca Zambrotta",
     "": "",
     "Nacionalidad": "Italia",
@@ -4796,7 +4818,7 @@
     "Fin": 2010
   },
   {
-    "Ranking": 219,
+    "Ranking": 220,
     "Nombre": "Hidetoshi Nakata",
     "": "",
     "Nacionalidad": "Japón",
@@ -4818,7 +4840,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 220,
+    "Ranking": 221,
     "Nombre": "George Weah",
     "": "",
     "Nacionalidad": "Liberia",
@@ -4840,7 +4862,7 @@
     "Fin": 2003
   },
   {
-    "Ranking": 221,
+    "Ranking": 222,
     "Nombre": "Hugo Sánchez",
     "": "",
     "Nacionalidad": "México",
@@ -4862,7 +4884,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 222,
+    "Ranking": 223,
     "Nombre": "Rafael Márquez",
     "": "",
     "Nacionalidad": "México",
@@ -4884,7 +4906,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 223,
+    "Ranking": 224,
     "Nombre": "Jorge Campos",
     "": "",
     "Nacionalidad": "México",
@@ -4906,7 +4928,7 @@
     "Fin": 2004
   },
   {
-    "Ranking": 224,
+    "Ranking": 225,
     "Nombre": "Luis Hernández",
     "": "",
     "Nacionalidad": "México",
@@ -4928,7 +4950,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 225,
+    "Ranking": 226,
     "Nombre": "Jay-Jay Okocha",
     "": "",
     "Nacionalidad": "Nigeria",
@@ -4950,7 +4972,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 226,
+    "Ranking": 227,
     "Nombre": "Nwankwo Kanu",
     "": "",
     "Nacionalidad": "Nigeria",
@@ -4972,7 +4994,7 @@
     "Fin": 2012
   },
   {
-    "Ranking": 227,
+    "Ranking": 228,
     "Nombre": "John Arne Riise",
     "": "",
     "Nacionalidad": "Noruega",
@@ -4994,7 +5016,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 228,
+    "Ranking": 229,
     "Nombre": "Ole Gunnar Solskjær",
     "": "",
     "Nacionalidad": "Noruega",
@@ -5016,7 +5038,7 @@
     "Fin": 2007
   },
   {
-    "Ranking": 229,
+    "Ranking": 230,
     "Nombre": "José Luis Chilavert",
     "": "",
     "Nacionalidad": "Paraguay",
@@ -5038,7 +5060,7 @@
     "Fin": 2004
   },
   {
-    "Ranking": 230,
+    "Ranking": 231,
     "Nombre": "Teófilo Cubillas",
     "": "",
     "Nacionalidad": "Perú",
@@ -5060,7 +5082,7 @@
     "Fin": 1989
   },
   {
-    "Ranking": 231,
+    "Ranking": 232,
     "Nombre": "Jerzy Dudek",
     "": "",
     "Nacionalidad": "Polonia",
@@ -5082,7 +5104,7 @@
     "Fin": 2011
   },
   {
-    "Ranking": 232,
+    "Ranking": 233,
     "Nombre": "Włodzimierz Smolarek",
     "": "",
     "Nacionalidad": "Polonia",
@@ -5104,7 +5126,7 @@
     "Fin": 2008
   },
   {
-    "Ranking": 233,
+    "Ranking": 234,
     "Nombre": "Zbigniew Boniek",
     "": "",
     "Nacionalidad": "Polonia",
@@ -5126,7 +5148,7 @@
     "Fin": 1991
   },
   {
-    "Ranking": 234,
+    "Ranking": 235,
     "Nombre": "Eusébio",
     "": "",
     "Nacionalidad": "Portugal",
@@ -5148,7 +5170,7 @@
     "Fin": 1975
   },
   {
-    "Ranking": 235,
+    "Ranking": 236,
     "Nombre": "Deco",
     "": "",
     "Nacionalidad": "Portugal",
@@ -5170,7 +5192,7 @@
     "Fin": 2013
   },
   {
-    "Ranking": 236,
+    "Ranking": 237,
     "Nombre": "Luís Figo",
     "": "",
     "Nacionalidad": "Portugal",
@@ -5192,7 +5214,7 @@
     "Fin": 2009
   },
   {
-    "Ranking": 237,
+    "Ranking": 238,
     "Nombre": "Ricardo Carvalho",
     "": "",
     "Nacionalidad": "Portugal",
@@ -5214,7 +5236,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 238,
+    "Ranking": 239,
     "Nombre": "Paulo Futre",
     "": "",
     "Nacionalidad": "Portugal",
@@ -5236,7 +5258,7 @@
     "Fin": 2000
   },
   {
-    "Ranking": 239,
+    "Ranking": 240,
     "Nombre": "Rui Costa",
     "": "",
     "Nacionalidad": "Portugal",
@@ -5258,7 +5280,7 @@
     "Fin": 2008
   },
   {
-    "Ranking": 240,
+    "Ranking": 241,
     "Nombre": "Pauleta",
     "": "",
     "Nacionalidad": "Portugal",
@@ -5280,7 +5302,7 @@
     "Fin": 2006
   },
   {
-    "Ranking": 241,
+    "Ranking": 242,
     "Nombre": "Vítor Baía",
     "": "",
     "Nacionalidad": "Portugal",
@@ -5302,7 +5324,7 @@
     "Fin": 2005
   },
   {
-    "Ranking": 242,
+    "Ranking": 243,
     "Nombre": "Josef Masopust",
     "": "",
     "Nacionalidad": "República Checa",
@@ -5324,7 +5346,7 @@
     "Fin": 1966
   },
   {
-    "Ranking": 243,
+    "Ranking": 244,
     "Nombre": "Petr Čech",
     "": "",
     "Nacionalidad": "República Checa",
@@ -5346,7 +5368,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 244,
+    "Ranking": 245,
     "Nombre": "Pavel Nedvěd",
     "": "",
     "Nacionalidad": "República Checa",
@@ -5368,7 +5390,7 @@
     "Fin": 2015
   },
   {
-    "Ranking": 245,
+    "Ranking": 246,
     "Nombre": "Tomáš Rosický",
     "": "",
     "Nacionalidad": "República Checa",
@@ -5390,7 +5412,7 @@
     "Fin": 2017
   },
   {
-    "Ranking": 246,
+    "Ranking": 247,
     "Nombre": "Gheorghe Hagi",
     "": "",
     "Nacionalidad": "Rumania",
@@ -5412,7 +5434,7 @@
     "Fin": 2001
   },
   {
-    "Ranking": 247,
+    "Ranking": 248,
     "Nombre": "Lev Yashin",
     "": "",
     "Nacionalidad": "Rusia",
@@ -5434,7 +5456,7 @@
     "Fin": 1970
   },
   {
-    "Ranking": 248,
+    "Ranking": 249,
     "Nombre": "Oleg Blokhin",
     "": "",
     "Nacionalidad": "Rusia",
@@ -5456,7 +5478,7 @@
     "Fin": 1990
   },
   {
-    "Ranking": 249,
+    "Ranking": 250,
     "Nombre": "Aleksandr Mostovoi",
     "": "",
     "Nacionalidad": "Rusia",
@@ -5478,7 +5500,7 @@
     "Fin": 2004
   },
   {
-    "Ranking": 250,
+    "Ranking": 251,
     "Nombre": "Nemanja Vidić",
     "": "",
     "Nacionalidad": "Serbia",
@@ -5500,7 +5522,7 @@
     "Fin": 2016
   },
   {
-    "Ranking": 251,
+    "Ranking": 252,
     "Nombre": "Zlatan Ibrahimović",
     "": "",
     "Nacionalidad": "Suecia",
@@ -5522,7 +5544,7 @@
     "Fin": 2023
   },
   {
-    "Ranking": 252,
+    "Ranking": 253,
     "Nombre": "Tomas Brolin",
     "": "",
     "Nacionalidad": "Suecia",
@@ -5544,7 +5566,7 @@
     "Fin": 1998
   },
   {
-    "Ranking": 253,
+    "Ranking": 254,
     "Nombre": "Freddie Ljungberg",
     "": "",
     "Nacionalidad": "Suecia",
@@ -5566,7 +5588,7 @@
     "Fin": 2012
   },
   {
-    "Ranking": 254,
+    "Ranking": 255,
     "Nombre": "Henrik Larsson",
     "": "",
     "Nacionalidad": "Suecia",
@@ -5588,7 +5610,7 @@
     "Fin": 2009
   },
   {
-    "Ranking": 255,
+    "Ranking": 256,
     "Nombre": "Alex Frei",
     "": "",
     "Nacionalidad": "Suiza",
@@ -5610,7 +5632,7 @@
     "Fin": 2013
   },
   {
-    "Ranking": 256,
+    "Ranking": 257,
     "Nombre": "Rüştü Reçber",
     "": "",
     "Nacionalidad": "Turquía",
@@ -5632,7 +5654,7 @@
     "Fin": 2012
   },
   {
-    "Ranking": 257,
+    "Ranking": 258,
     "Nombre": "Andriy Shevchenko",
     "": "",
     "Nacionalidad": "Ucrania",
@@ -5654,7 +5676,7 @@
     "Fin": 2012
   },
   {
-    "Ranking": 258,
+    "Ranking": 259,
     "Nombre": "Juan Schiaffino",
     "": "",
     "Nacionalidad": "Uruguay",
@@ -5676,7 +5698,7 @@
     "Fin": 1962
   },
   {
-    "Ranking": 259,
+    "Ranking": 260,
     "Nombre": "Diego Forlán",
     "": "",
     "Nacionalidad": "Uruguay",
@@ -5698,7 +5720,7 @@
     "Fin": 2018
   },
   {
-    "Ranking": 260,
+    "Ranking": 261,
     "Nombre": "Enzo Francescoli",
     "": "",
     "Nacionalidad": "Uruguay",
