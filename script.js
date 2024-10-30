@@ -328,7 +328,10 @@ function checkGuess() {
   attributes.forEach(({ key, label }) => {
     const div = document.createElement("div");
     div.className = "attribute";
-
+    if (key === "Trayectoria") {
+      div.classList.add("trayectoria");
+    }
+    
     // Verificar que la propiedad existe
     if (guessedPlayer[key] === undefined) {
       console.warn(`Property ${key} not found in player:`, guessedPlayer);
