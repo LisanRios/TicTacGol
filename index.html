@@ -114,6 +114,10 @@
                   <div class="game-buttons">
                       <button id="newGameButton" onclick="resetGame()">🔄 Nueva Partida</button>
                       <button id="newGameButton" onclick="resetStats()">📊 Reiniciar Puntos</button>
+                      <button id="hintButton" onclick="getHint()">💡 Pista</button>
+                      <button id="shareButton" onclick="shareResult()" style="display: none">
+                          Compartir
+                        </button>
                   </div>
 
                   <div class="input-container">
@@ -121,10 +125,6 @@
                     <datalist id="playersList"></datalist>
                     <button onclick="checkGuess()" id="guessButton">Adivinar</button>
                   </div>
-        
-                
-        
-                <button id="hintButton" onclick="getHint()">💡 Pista</button>
         
                   <div id="hint" class="hint-text"></div>
         
@@ -135,13 +135,25 @@
                   <div class="progress-bar">
                       <div id="progressBar" class="progress"></div>
                   </div>
-        
+
                   <div id="attemptsContainer" class="attempts"></div>
                   <div id="gameOver"></div>
+        
+                  <div id="attemptsContainer">
+                    <div class="attempt-headers">
+                      <div class="attribute">Nombre</div>
+                      <div class="attribute">País</div>
+                      <div class="attribute">Confederación</div>
+                      <div class="attribute">Media</div>
+                      <div class="attribute">Posición</div>
+                      <div class="attribute">Skills</div>
+                      <div class="attribute">Altura</div>
+                      <div class="attribute">Trayectoria</div>
+                    </div>
+                    <div id="attemptsList"></div>
+                  </div>
 
-                  <button id="shareButton" onclick="shareResult()" style="display: none">
-                    Compartir
-                  </button>
+
               </div>
           </div>
 

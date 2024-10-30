@@ -140,20 +140,9 @@ function resetGame() {
     hintButton.disabled = false; // Habilita el botón de pista
   }
 
-  const attemptsContainer = document.getElementById("attemptsContainer");
-  if (attemptsContainer) {
-    attemptsContainer.innerHTML = `
-            <div class="attempt">
-                <div class="attribute">Nombre</div>
-                <div class="attribute">País</div>
-                <div class="attribute">Confederación</div>
-                <div class="attribute">Media</div>
-                <div class="attribute">Posición</div>
-                <div class="attribute">Skills</div>
-                <div class="attribute">Altura</div>
-                <div class="attribute">Trayectoria</div>
-            </div>
-        `;
+  const attemptsList = document.getElementById("attemptsList");
+  if (attemptsList) {
+    attemptsList.innerHTML = "";
   }
 
   const gameOver = document.getElementById("gameOver");
@@ -391,7 +380,12 @@ function checkGuess() {
     attemptDiv.appendChild(div);
   });
 
-  document.getElementById("attemptsContainer").appendChild(attemptDiv);
+  const attemptsList = document.getElementById("attemptsList");
+  if (attemptsList.firstChild) {
+    attemptsList.insertBefore(attemptDiv, attemptsList.firstChild);
+  } else {
+    attemptsList.appendChild(attemptDiv);
+  }
   input.value = "";
 
   if (guess.toLowerCase() === targetPlayer.Nombre.toLowerCase()) {
