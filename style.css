@@ -431,7 +431,7 @@ button:active {
 }
 
 /* Estilos para el modal de reglas */
-.modal {
+/* .modal {
   display: none;
   position: fixed;
   z-index: 1000;
@@ -444,7 +444,7 @@ button:active {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .modal-content {
   background-color: var(--card-background);
