@@ -322,7 +322,7 @@ function generateMarketValue() {
     // Verificar si la posición existe en POSICION_CONFIG
     if (!config) {
         console.error(`Posición no válida en POSICION_CONFIG: ${playerStats.posicion}`);
-        return 100000; // Valor por defecto o manejar el error de otra manera
+        return Math.floor(Math.random() * 99500) + 500; // Valor por defecto o manejar el error de otra manera
     }
 
     let valorBase = Math.pow(media, 2) * 10000;
@@ -332,9 +332,9 @@ function generateMarketValue() {
     if (edad <= 18) {
         multiplicadorEdad = 0.5 - (edad - 16) * 0.05;
     } else if (edad <= 23) {
-        multiplicadorEdad = 0.25;
+        multiplicadorEdad = 0.5 - (edad - 20) * 0.05;
     } else if (edad <= 28) {
-        multiplicadorEdad = 0;
+        multiplicadorEdad = 1;
     } else {
         multiplicadorEdad = Math.max(0.2, 1 - (edad - 28) * 0.1);
     }
@@ -383,10 +383,10 @@ function rendimiento() {
         probabilidadBajar = 0.2; // 20% de probabilidad de bajar
     } else if (playerStats.age >= 21 && playerStats.age <= 27) {
         // Jugadores en desarrollo tienen una probabilidad moderada
-        probabilidadBajar = 0.2; // 20% de probabilidad de bajar
+        probabilidadBajar = 0.3; // 30% de probabilidad de bajar
     } else if (playerStats.age >= 28 && playerStats.age <= 34) {
         // Jugadores maduros tienen una probabilidad baja
-        probabilidadBajar = 0.2; // 20% de probabilidad de bajar
+        probabilidadBajar = 0.4; // 40% de probabilidad de bajar
     } else {
         // Jugadores veteranos tienen una probabilidad alta de bajar
         probabilidadBajar = 0.5; // 50% de probabilidad de bajar
