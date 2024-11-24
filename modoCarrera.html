@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modo Carrera | Un Jugador</title>
+    <link rel="stylesheet" href="modoCarrera.css"> <!-- Si tienes un archivo CSS -->
+</head>
+<body>
+
+    <h1>Modo Carrera un Jugador</h1>
+
+    <form id="playerForm">
+        <input type="text" id="nombre" placeholder="Nombre" required>
+        <input type="text" id="apellido" placeholder="Apellido" required>
+        <input type="number" id="edad" placeholder="Edad" required>
+        <input type="text" id="posicion" placeholder="Posición" required>
+        <input type="text" id="club" placeholder="Club" required>
+        <input type="text" id="pais" placeholder="País" required>
+        <input type="number" id="media" placeholder="Media" required>
+        <button type="submit">Agregar Jugador</button>
+    </form>
+
+    <div id="playerInfo" style="display: none;">
+        
+        <h2>Información de Carrera</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Año</th>
+                    <th>Edad</th>
+                    <th>Club</th>
+                    <th>Media</th>
+                    <th>Valor de Mercado</th>
+                    <th>Partidos (Año)</th>
+                    <th>Goles (Año)</th>
+                    <th>Asistencias (Año)</th>
+                </tr>
+            </thead>
+            <tbody id="playerStats">
+                <!-- Aquí se agregarán las filas de estadísticas -->
+            </tbody>
+
+            <button id="nextYearBtn">Siguiente Año</button>
+        </table>
+        
+        <h2>Records y Logros</h2>
+
+        <!-- Fila para mostrar la información consolidada -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre y Apellido</th>
+                    <th>Clubes Jugados</th>
+                    <th>Mejor Media</th>
+                    <th>Valor de Mercado Más Alto</th>
+                    <th>Tot. Partidos</th>
+                    <th>Tot. Goles</th>
+                    <th>Tot. Asistencias</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="consolidatedStats">
+                    <!-- Aquí se mostrará la información consolidada -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="modoCarrera.js"></script> <!-- Tu archivo JavaScript -->
+</body>
+</html>
