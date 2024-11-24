@@ -57,8 +57,8 @@ const POSICION_CONFIG = {
     'GK': {
         valorMultiplicador: 0.4,
         partidosBase: { min: 34, max: 38 },
-        golesBase: { min: 0, max: 0 },
-        asistenciasBase: { min: 0, max: 2 }
+        golesBase: { min: 0, max: 1 },
+        asistenciasBase: { min: 0, max: 1 }
     }
 };
 
@@ -363,16 +363,9 @@ function generateMarketValue() {
 
 function rendimiento() {
     const posicion = playerStats.posicion;
-    
-    // Verificar si la posición existe en RENDIMIENTO_CONFIG
-    if (!RENDIMIENTO_CONFIG[posicion]) {
-        console.error(`Posición no válida: ${posicion}`);
-        return 1; // Retornar un valor por defecto o manejar el error de otra manera
-    }
-
     const media = playerStats.media;
     const distribucion = RENDIMIENTO_CONFIG[posicion].distribucion;
-
+    
     // Ajuste por media del jugador
     let ajustePorMedia = 1;
     if (media >= 85) {
@@ -383,12 +376,29 @@ function rendimiento() {
 
     // Ajuste por edad
     let ajustePorEdad = 1;
-    if (playerStats.age >= 28 && playerStats.age <= 32) {
-        ajustePorEdad = 1.1;
-    } else if (playerStats.age > 32) {
-        ajustePorEdad = 0.9;
+    let probabilidadBajar = 0;
+
+    if (playerStats.age < 21) {
+        // Jugadores muy jóvenes tienen una probabilidad de bajar
+        probabilidadBajar = 0.2; // 20% de probabilidad de bajar
+    } else if (playerStats.age >= 21 && playerStats.age <= 27) {
+        // Jugadores en desarrollo tienen una probabilidad moderada
+        probabilidadBajar = 0.2; // 20% de probabilidad de bajar
+    } else if (playerStats.age >= 28 && playerStats.age <= 34) {
+        // Jugadores maduros tienen una probabilidad baja
+        probabilidadBajar = 0.2; // 20% de probabilidad de bajar
+    } else {
+        // Jugadores veteranos tienen una probabilidad alta de bajar
+        probabilidadBajar = 0.5; // 50% de probabilidad de bajar
     }
 
+    // Generar número aleatorio para determinar si el rendimiento baja
+    if (Math.random() < probabilidadBajar) {
+        // Disminuir el rendimiento en un valor aleatorio
+        return Math.max(1, Math.floor(Math.random() * 3)); // Bajar a un rendimiento entre 1 y 2
+    }
+
+    // Generar número aleatorio para el rendimiento normal
     const random = Math.random();
     let acumulado = 0;
 
@@ -396,13 +406,14 @@ function rendimiento() {
     for (let i = 0; i < distribucion.length; i++) {
         let probAjustada = distribucion[i].probabilidad * ajustePorMedia * ajustePorEdad;
         acumulado += probAjustada;
-
+        
         if (random <= acumulado) {
             return distribucion[i].valor;
         }
     }
 
-    return 1; // Por defecto, retornar el valor más bajo si algo sale mal
+    // Por defecto, retornar el valor más bajo si algo sale mal
+    return 1;
 }
 
 // Función auxiliar para verificar que las probabilidades sumen 1
