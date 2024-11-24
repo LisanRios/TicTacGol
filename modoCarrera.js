@@ -1,61 +1,61 @@
 // Configuración de posiciones
 const POSICION_CONFIG = {
     'ST': {
-        valorMultiplicador: 1.5,
+        valorMultiplicador: 0.5,
         partidosBase: { min: 25, max: 38 },
         golesBase: { min: 15, max: 35 },
         asistenciasBase: { min: 3, max: 8 }
     },
     'LW': {
-        valorMultiplicador: 1.3,
+        valorMultiplicador: 0.3,
         partidosBase: { min: 25, max: 38 },
         golesBase: { min: 8, max: 20 },
         asistenciasBase: { min: 8, max: 15 }
     },
     'RW': {
-        valorMultiplicador: 1.3,
+        valorMultiplicador: 0.3,
         partidosBase: { min: 25, max: 38 },
         golesBase: { min: 8, max: 20 },
         asistenciasBase: { min: 8, max: 15 }
     },
     'CAM': {
-        valorMultiplicador: 1.4,
+        valorMultiplicador: 0.4,
         partidosBase: { min: 25, max: 38 },
         golesBase: { min: 6, max: 15 },
         asistenciasBase: { min: 10, max: 20 }
     },
     'CM': {
-        valorMultiplicador: 1.2,
+        valorMultiplicador: 0.2,
         partidosBase: { min: 25, max: 38 },
         golesBase: { min: 3, max: 8 },
         asistenciasBase: { min: 5, max: 12 }
     },
     'CDM': {
-        valorMultiplicador: 1.1,
+        valorMultiplicador: 0.1,
         partidosBase: { min: 25, max: 38 },
         golesBase: { min: 1, max: 4 },
         asistenciasBase: { min: 2, max: 6 }
     },
     'CB': {
-        valorMultiplicador: 1.1,
+        valorMultiplicador: 0.1,
         partidosBase: { min: 25, max: 38 },
         golesBase: { min: 1, max: 5 },
         asistenciasBase: { min: 1, max: 4 }
     },
     'LB': {
-        valorMultiplicador: 1.2,
+        valorMultiplicador: 0.2,
         partidosBase: { min: 25, max: 38 },
         golesBase: { min: 1, max: 3 },
         asistenciasBase: { min: 5, max: 10 }
     },
     'RB': {
-        valorMultiplicador: 1.2,
+        valorMultiplicador: 0.2,
         partidosBase: { min: 25, max: 38 },
         golesBase: { min: 1, max: 3 },
         asistenciasBase: { min: 5, max: 10 }
     },
     'GK': {
-        valorMultiplicador: 1.4,
+        valorMultiplicador: 0.4,
         partidosBase: { min: 34, max: 38 },
         golesBase: { min: 0, max: 0 },
         asistenciasBase: { min: 0, max: 2 }
@@ -314,22 +314,27 @@ function actualizarTablaYFilaConsolidada() {
     updateConsolidatedRow(playerStats);
 }
 
-// Modificar la función generateMarketValue para incluir el multiplicador por posición
 function generateMarketValue() {
     const edad = playerStats.age;
     const media = playerStats.media;
     const config = POSICION_CONFIG[playerStats.posicion];
-    let valorBase;
 
-    // Valor base según la media del jugador (exponencial para reflejar que las estrellas valen mucho más)
-    valorBase = Math.pow(media, 2) * 10000;
+    // Verificar si la posición existe en POSICION_CONFIG
+    if (!config) {
+        console.error(`Posición no válida en POSICION_CONFIG: ${playerStats.posicion}`);
+        return 100000; // Valor por defecto o manejar el error de otra manera
+    }
+
+    let valorBase = Math.pow(media, 2) * 10000;
 
     // Multiplicador por edad
     let multiplicadorEdad = 1;
-    if (edad <= 23) {
-        multiplicadorEdad = 1.5 - (edad - 16) * 0.05;
+    if (edad <= 18) {
+        multiplicadorEdad = 0.5 - (edad - 16) * 0.05;
+    } else if (edad <= 23) {
+        multiplicadorEdad = 0.25;
     } else if (edad <= 28) {
-        multiplicadorEdad = 1;
+        multiplicadorEdad = 0;
     } else {
         multiplicadorEdad = Math.max(0.2, 1 - (edad - 28) * 0.1);
     }
@@ -358,30 +363,32 @@ function generateMarketValue() {
 
 function rendimiento() {
     const posicion = playerStats.posicion;
+    
+    // Verificar si la posición existe en RENDIMIENTO_CONFIG
+    if (!RENDIMIENTO_CONFIG[posicion]) {
+        console.error(`Posición no válida: ${posicion}`);
+        return 1; // Retornar un valor por defecto o manejar el error de otra manera
+    }
+
     const media = playerStats.media;
     const distribucion = RENDIMIENTO_CONFIG[posicion].distribucion;
-    
+
     // Ajuste por media del jugador
     let ajustePorMedia = 1;
     if (media >= 85) {
-        // Jugadores de alta media son más consistentes
         ajustePorMedia = 1.2;
     } else if (media <= 65) {
-        // Jugadores de baja media son menos consistentes
         ajustePorMedia = 0.8;
     }
 
     // Ajuste por edad
     let ajustePorEdad = 1;
     if (playerStats.age >= 28 && playerStats.age <= 32) {
-        // Jugadores en su prime son más consistentes
         ajustePorEdad = 1.1;
     } else if (playerStats.age > 32) {
-        // Jugadores veteranos son menos consistentes
         ajustePorEdad = 0.9;
     }
 
-    // Generar número aleatorio
     const random = Math.random();
     let acumulado = 0;
 
@@ -389,14 +396,13 @@ function rendimiento() {
     for (let i = 0; i < distribucion.length; i++) {
         let probAjustada = distribucion[i].probabilidad * ajustePorMedia * ajustePorEdad;
         acumulado += probAjustada;
-        
+
         if (random <= acumulado) {
             return distribucion[i].valor;
         }
     }
 
-    // Por defecto, retornar el valor más bajo si algo sale mal
-    return 1;
+    return 1; // Por defecto, retornar el valor más bajo si algo sale mal
 }
 
 // Función auxiliar para verificar que las probabilidades sumen 1
