@@ -1,9 +1,183 @@
+// Configuración de posiciones
+const POSICION_CONFIG = {
+    'ST': {
+        valorMultiplicador: 1.5,
+        partidosBase: { min: 25, max: 38 },
+        golesBase: { min: 15, max: 35 },
+        asistenciasBase: { min: 3, max: 8 }
+    },
+    'LW': {
+        valorMultiplicador: 1.3,
+        partidosBase: { min: 25, max: 38 },
+        golesBase: { min: 8, max: 20 },
+        asistenciasBase: { min: 8, max: 15 }
+    },
+    'RW': {
+        valorMultiplicador: 1.3,
+        partidosBase: { min: 25, max: 38 },
+        golesBase: { min: 8, max: 20 },
+        asistenciasBase: { min: 8, max: 15 }
+    },
+    'CAM': {
+        valorMultiplicador: 1.4,
+        partidosBase: { min: 25, max: 38 },
+        golesBase: { min: 6, max: 15 },
+        asistenciasBase: { min: 10, max: 20 }
+    },
+    'CM': {
+        valorMultiplicador: 1.2,
+        partidosBase: { min: 25, max: 38 },
+        golesBase: { min: 3, max: 8 },
+        asistenciasBase: { min: 5, max: 12 }
+    },
+    'CDM': {
+        valorMultiplicador: 1.1,
+        partidosBase: { min: 25, max: 38 },
+        golesBase: { min: 1, max: 4 },
+        asistenciasBase: { min: 2, max: 6 }
+    },
+    'CB': {
+        valorMultiplicador: 1.1,
+        partidosBase: { min: 25, max: 38 },
+        golesBase: { min: 1, max: 5 },
+        asistenciasBase: { min: 1, max: 4 }
+    },
+    'LB': {
+        valorMultiplicador: 1.2,
+        partidosBase: { min: 25, max: 38 },
+        golesBase: { min: 1, max: 3 },
+        asistenciasBase: { min: 5, max: 10 }
+    },
+    'RB': {
+        valorMultiplicador: 1.2,
+        partidosBase: { min: 25, max: 38 },
+        golesBase: { min: 1, max: 3 },
+        asistenciasBase: { min: 5, max: 10 }
+    },
+    'GK': {
+        valorMultiplicador: 1.4,
+        partidosBase: { min: 34, max: 38 },
+        golesBase: { min: 0, max: 0 },
+        asistenciasBase: { min: 0, max: 2 }
+    }
+};
+
+// Configuración de rendimiento por posición
+const RENDIMIENTO_CONFIG = {
+    'ST': {
+        // Los delanteros son más volátiles en su rendimiento
+        distribucion: [
+            { valor: 6, probabilidad: 0.10 }, // Excepcional
+            { valor: 5, probabilidad: 0.20 }, // Muy bueno
+            { valor: 4, probabilidad: 0.25 }, // Bueno
+            { valor: 3, probabilidad: 0.25 }, // Regular
+            { valor: 2, probabilidad: 0.15 }, // Malo
+            { valor: 1, probabilidad: 0.05 }  // Muy malo
+        ]
+    },
+    'LW': {
+        distribucion: [
+            { valor: 6, probabilidad: 0.08 },
+            { valor: 5, probabilidad: 0.22 },
+            { valor: 4, probabilidad: 0.30 },
+            { valor: 3, probabilidad: 0.25 },
+            { valor: 2, probabilidad: 0.10 },
+            { valor: 1, probabilidad: 0.05 }
+        ]
+    },
+    'RW': {
+        distribucion: [
+            { valor: 6, probabilidad: 0.08 },
+            { valor: 5, probabilidad: 0.22 },
+            { valor: 4, probabilidad: 0.30 },
+            { valor: 3, probabilidad: 0.25 },
+            { valor: 2, probabilidad: 0.10 },
+            { valor: 1, probabilidad: 0.05 }
+        ]
+    },
+    'CAM': {
+        distribucion: [
+            { valor: 6, probabilidad: 0.08 },
+            { valor: 5, probabilidad: 0.22 },
+            { valor: 4, probabilidad: 0.30 },
+            { valor: 3, probabilidad: 0.25 },
+            { valor: 2, probabilidad: 0.10 },
+            { valor: 1, probabilidad: 0.05 }
+        ]
+    },
+    'CM': {
+        // Los centrocampistas tienden a ser más consistentes
+        distribucion: [
+            { valor: 6, probabilidad: 0.05 },
+            { valor: 5, probabilidad: 0.20 },
+            { valor: 4, probabilidad: 0.35 },
+            { valor: 3, probabilidad: 0.25 },
+            { valor: 2, probabilidad: 0.10 },
+            { valor: 1, probabilidad: 0.05 }
+        ]
+    },
+    'CDM': {
+        distribucion: [
+            { valor: 6, probabilidad: 0.05 },
+            { valor: 5, probabilidad: 0.20 },
+            { valor: 4, probabilidad: 0.35 },
+            { valor: 3, probabilidad: 0.25 },
+            { valor: 2, probabilidad: 0.10 },
+            { valor: 1, probabilidad: 0.05 }
+        ]
+    },
+    'CB': {
+        // Los defensores centrales son muy consistentes
+        distribucion: [
+            { valor: 6, probabilidad: 0.05 },
+            { valor: 5, probabilidad: 0.15 },
+            { valor: 4, probabilidad: 0.40 },
+            { valor: 3, probabilidad: 0.25 },
+            { valor: 2, probabilidad: 0.10 },
+            { valor: 1, probabilidad: 0.05 }
+        ]
+    },
+    'LB': {
+        distribucion: [
+            { valor: 6, probabilidad: 0.05 },
+            { valor: 5, probabilidad: 0.15 },
+            { valor: 4, probabilidad: 0.35 },
+            { valor: 3, probabilidad: 0.30 },
+            { valor: 2, probabilidad: 0.10 },
+            { valor: 1, probabilidad: 0.05 }
+        ]
+    },
+    'RB': {
+        distribucion: [
+            { valor: 6, probabilidad: 0.05 },
+            { valor: 5, probabilidad: 0.15 },
+            { valor: 4, probabilidad: 0.35 },
+            { valor: 3, probabilidad: 0.30 },
+            { valor: 2, probabilidad: 0.10 },
+            { valor: 1, probabilidad: 0.05 }
+        ]
+    },
+    'GK': {
+        // Los porteros son los más consistentes
+        distribucion: [
+            { valor: 6, probabilidad: 0.05 },
+            { valor: 5, probabilidad: 0.15 },
+            { valor: 4, probabilidad: 0.45 },
+            { valor: 3, probabilidad: 0.25 },
+            { valor: 2, probabilidad: 0.07 },
+            { valor: 1, probabilidad: 0.03 }
+        ]
+    }
+};
+
+
 let playerStats = {}; // Declarar playerStats fuera del evento del formulario
 
+// Actualizar el evento del formulario para incluir la posición
 document.getElementById('playerForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Obtener datos del formulario
+    // Obtener datos del formulario (agregar posición)
     const nombre = document.getElementById('nombre').value;
     const apellido = document.getElementById('apellido').value;
     const edad = parseInt(document.getElementById('edad').value);
@@ -12,26 +186,27 @@ document.getElementById('playerForm').addEventListener('submit', function(event)
     const pais = document.getElementById('pais').value;
     const mediaBase = parseInt(document.getElementById('media').value);
 
-    // Inicializar estadísticas del jugador
+    // Inicializar estadísticas del jugador (agregar posición)
     playerStats = {
         nombre: nombre,
         apellido: apellido,
-        startYear: new Date().getFullYear(), // Guardar el año actual como año de inicio
+        startYear: new Date().getFullYear(),
         age: edad,
+        posicion: posicion, // Agregar posición
         club: club,
         media: mediaBase,
-        marketValue: generateMarketValue(), // Valor de mercado real
-        displayedMarketValue: roundMarketValue(generateMarketValue()), // Valor de mercado redondeado
-        matches: 0, // Partidos del año actual
-        goals: 0, // Goles del año actual
-        assists: 0, // Asistencias del año actual
-        totalMatches: 0, // Total acumulado de partidos
-        totalGoals: 0, // Total acumulado de goles
-        totalAssists: 0, // Total acumulado de asistencias
-        clubsPlayed: [], // Lista de clubes jugados
-        bestMedia: mediaBase, // Mejor media
-        highestMarketValue: 0, // Valor de mercado más alto
-        yearsPlayed: 0 // Inicializar años jugados
+        marketValue: generateMarketValue(),
+        displayedMarketValue: roundMarketValue(generateMarketValue()),
+        matches: 0,
+        goals: 0,
+        assists: 0,
+        totalMatches: 0,
+        totalGoals: 0,
+        totalAssists: 0,
+        clubsPlayed: [],
+        bestMedia: mediaBase,
+        highestMarketValue: 0,
+        yearsPlayed: 0
     };
 
     // Agregar el club a la lista de clubes jugados
@@ -74,15 +249,18 @@ function generarEstadisticasAnuales() {
 }
 
 function generarPartidosAnuales() {
-    return Math.floor(Math.random() * 30) + 10; // Partidos aleatorios
+    const config = POSICION_CONFIG[playerStats.posicion];
+    return Math.floor(Math.random() * (config.partidosBase.max - config.partidosBase.min + 1)) + config.partidosBase.min;
 }
 
 function generarGolesAnuales() {
-    return Math.floor(Math.random() * 20); // Goles aleatorios
+    const config = POSICION_CONFIG[playerStats.posicion];
+    return Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min;
 }
 
 function generarAsistenciasAnuales() {
-    return Math.floor(Math.random() * 15); // Asistencias aleatorias
+    const config = POSICION_CONFIG[playerStats.posicion];
+    return Math.floor(Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min;
 }
 
 function actualizarValoresDeMercado() {
@@ -100,7 +278,35 @@ function actualizarValoresDeMercado() {
 }
 
 function actualizarMedia() {
-    playerStats.media = Math.max(0, playerStats.media + Math.floor(Math.random() * 5) - 2); // Cambiar media aleatoriamente
+    const edad = playerStats.age;
+    let probabilidadSubida = 0;
+    let maximoIncremento = 0;
+    
+    // Definir probabilidades y máximos incrementos según la edad
+    if (edad <= 21) {
+        // Jugadores muy jóvenes: alta probabilidad de mejora y mayor incremento
+        probabilidadSubida = 0.8;
+        maximoIncremento = 4;
+    } else if (edad <= 27) {
+        // Jugadores en desarrollo: probabilidad media y incremento moderado
+        probabilidadSubida = 0.6;
+        maximoIncremento = 2;
+    } else if (edad <= 34) {
+        // Jugadores maduros: baja probabilidad y pequeño incremento
+        probabilidadSubida = 0.3;
+        maximoIncremento = 1;
+    } else {
+        // Jugadores veteranos: solo bajan
+        const decrementoBase = Math.floor(Math.random() * 2) + 1; // Bajada de 1-2 puntos
+        playerStats.media = Math.max(50, playerStats.media - decrementoBase); // No bajar de 50
+        return;
+    }
+
+    // Determinar si hay mejora basado en la probabilidad
+    if (Math.random() < probabilidadSubida) {
+        const incremento = Math.floor(Math.random() * maximoIncremento) + 1;
+        playerStats.media = Math.min(99, playerStats.media + incremento); // No superar 99
+    }
 }
 
 function actualizarTablaYFilaConsolidada() {
@@ -108,94 +314,112 @@ function actualizarTablaYFilaConsolidada() {
     updateConsolidatedRow(playerStats);
 }
 
+// Modificar la función generateMarketValue para incluir el multiplicador por posición
+function generateMarketValue() {
+    const edad = playerStats.age;
+    const media = playerStats.media;
+    const config = POSICION_CONFIG[playerStats.posicion];
+    let valorBase;
+
+    // Valor base según la media del jugador (exponencial para reflejar que las estrellas valen mucho más)
+    valorBase = Math.pow(media, 2) * 10000;
+
+    // Multiplicador por edad
+    let multiplicadorEdad = 1;
+    if (edad <= 23) {
+        multiplicadorEdad = 1.5 - (edad - 16) * 0.05;
+    } else if (edad <= 28) {
+        multiplicadorEdad = 1;
+    } else {
+        multiplicadorEdad = Math.max(0.2, 1 - (edad - 28) * 0.1);
+    }
+
+    // Multiplicador por rendimiento
+    const rendimientoValue = rendimiento();
+    const multiplicadorRendimiento = rendimientoValue / 3;
+
+    // Multiplicador por posición
+    const multiplicadorPosicion = config.valorMultiplicador;
+
+    // Calcular valor final
+    let valorFinal = valorBase * multiplicadorEdad * multiplicadorRendimiento * multiplicadorPosicion;
+
+    // Ajustes finales para valores más realistas
+    if (media >= 90) {
+        valorFinal *= 2;
+    }
+
+    // Establecer límites realistas
+    valorFinal = Math.max(100000, valorFinal);
+    valorFinal = Math.min(300000000, valorFinal);
+
+    return valorFinal;
+}
+
 function rendimiento() {
-    // Definir los posibles valores y sus probabilidades asociadas
-    const valores = [3, 4, 5, 2, 1, 6];
-    const probabilidades = [0.25, 0.25, 0.21875, 0.21875, 0.03125, 0.03125];
+    const posicion = playerStats.posicion;
+    const media = playerStats.media;
+    const distribucion = RENDIMIENTO_CONFIG[posicion].distribucion;
+    
+    // Ajuste por media del jugador
+    let ajustePorMedia = 1;
+    if (media >= 85) {
+        // Jugadores de alta media son más consistentes
+        ajustePorMedia = 1.2;
+    } else if (media <= 65) {
+        // Jugadores de baja media son menos consistentes
+        ajustePorMedia = 0.8;
+    }
 
-    // Seleccionar un valor basado en las probabilidades definidas
-    const randomValue = Math.random();
-    let cumulativeProbability = 0;
+    // Ajuste por edad
+    let ajustePorEdad = 1;
+    if (playerStats.age >= 28 && playerStats.age <= 32) {
+        // Jugadores en su prime son más consistentes
+        ajustePorEdad = 1.1;
+    } else if (playerStats.age > 32) {
+        // Jugadores veteranos son menos consistentes
+        ajustePorEdad = 0.9;
+    }
 
-    for (let i = 0; i < probabilidades.length; i++) {
-        cumulativeProbability += probabilidades[i];
-        if (randomValue < cumulativeProbability) {
-            return valores[i];
+    // Generar número aleatorio
+    const random = Math.random();
+    let acumulado = 0;
+
+    // Ajustar probabilidades con los factores
+    for (let i = 0; i < distribucion.length; i++) {
+        let probAjustada = distribucion[i].probabilidad * ajustePorMedia * ajustePorEdad;
+        acumulado += probAjustada;
+        
+        if (random <= acumulado) {
+            return distribucion[i].valor;
         }
     }
+
+    // Por defecto, retornar el valor más bajo si algo sale mal
+    return 1;
 }
 
-function calcularEstrellasPrecio(precio) {
-    // Precio en millones, convierte a estrellas
-    if (precio < 0.2) {
-        return 1;  // Menos de 100K
-    } else if (precio < 1) {
-        return 2;  // 250K a 1M
-    } else if (precio < 10) {
-        return 3;  // 1M a 10M
-    } else if (precio < 30) {
-        return 4;  // 10M a 30M
-    } else if (precio < 60) {
-        return 5;  // 30M a 60M
-    } else {
-        return 6;  // Más de 60M
+// Función auxiliar para verificar que las probabilidades sumen 1
+function verificarProbabilidades() {
+    for (const posicion in RENDIMIENTO_CONFIG) {
+        const suma = RENDIMIENTO_CONFIG[posicion].distribucion
+            .reduce((acc, item) => acc + item.probabilidad, 0);
+        console.log(`Suma de probabilidades para ${posicion}: ${suma}`);
     }
 }
 
-function calcularEstrellasRendimiento(rendimiento) {
-    // Mapea el rendimiento a estrellas
-    return rendimiento; // Ya que el rendimiento es un valor entre 1 y 6
-}
-
-function calcularEstrellasEdad(edad) {
-    // Edad convierte a estrellas
-    if (edad > 39) {
-        return 1;
-    } else if (edad >= 35) {
-        return 2;
-    } else if (edad >= 30) {
-        return 3;
-    } else if (edad >= 24) {
-        return 6;
-    } else if (edad >= 20) {
-        return 5;
-    } else {
-        return 4;
-    }
-}
-
-function calcularMedia(precio, rendimiento, edad) {
-    // Calcula la media de las estrellas de las tres variantes
-    const estrellasPrecio = calcularEstrellasPrecio(precio);
-    const estrellasRendimiento = calcularEstrellasRendimiento(rendimiento);
-    const estrellasEdad = calcularEstrellasEdad(edad);
-    
-    // Calcular la media de las estrellas
-    let mediaEstrellas = (estrellasPrecio + estrellasRendimiento + estrellasEdad) / 3;
-    
-    // Sumar 1 estrella al resultado final y asegurarse de que esté en el rango de 1 a 6
-    mediaEstrellas = Math.min(6, mediaEstrellas + 1);
-    
-    // Redondear a una cifra decimal
-    return Math.round(mediaEstrellas * 10) / 10; // Redondeo a una cifra decimal
-}
-
-// Ejemplo de uso
-function generateMarketValue() {
-    // Generar un valor de mercado aleatorio entre 500,000 y 1,500,000
-    const basePrice = Math.floor(Math.random() * 1000000) + 500000; // Valor base
-    const rendimientoValue = rendimiento(); // Obtener rendimiento
-    const edadValue = playerStats.age; // Usar la edad del jugador
-
-    // Calcular la media utilizando el precio, rendimiento y edad
-    const mediaEstrellas = calcularMedia(basePrice / 1000000, rendimientoValue, edadValue);
-    
-    // Calcular el valor de mercado final basado en la media
-    return basePrice * mediaEstrellas; // Ajustar el valor de mercado basado en la media de estrellas
-}
 function roundMarketValue(value) {
-    // Redondear el valor al múltiplo más cercano de 100,000
-    return Math.round(value / 100000) * 100000;
+    // Función mejorada para redondear valores de manera más realista
+    if (value < 1000000) {
+        // Menos de 1M: redondear a decenas de miles
+        return Math.round(value / 10000) * 10000;
+    } else if (value < 10000000) {
+        // Entre 1M y 10M: redondear a cientos de miles
+        return Math.round(value / 100000) * 100000;
+    } else {
+        // Más de 10M: redondear a millones
+        return Math.round(value / 1000000) * 1000000;
+    }
 }
 
 function updatePlayerTable(stats) {
