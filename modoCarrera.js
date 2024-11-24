@@ -242,6 +242,10 @@ function generarEstadisticasAnuales() {
     playerStats.goals = generarGolesAnuales();
     playerStats.assists = generarAsistenciasAnuales();
 
+    // Calcular rendimiento y almacenar el valor numérico
+    const rendimientoValue = rendimiento(); // Esto ahora devolverá un número
+    playerStats.rendimiento = rendimientoValue; // Almacenar el rendimiento como número
+
     // Actualizar los totales acumulados
     playerStats.totalMatches += playerStats.matches;
     playerStats.totalGoals += playerStats.goals;
@@ -249,18 +253,100 @@ function generarEstadisticasAnuales() {
 }
 
 function generarPartidosAnuales() {
-    const config = POSICION_CONFIG[playerStats.posicion];
-    return Math.floor(Math.random() * (config.partidosBase.max - config.partidosBase.min + 1)) + config.partidosBase.min;
+    const rendimientoValue = playerStats.rendimiento; // Obtener el rendimiento
+    let partidos;
+
+    switch (rendimientoValue) {
+        case 1: // Muy malo
+            partidos = Math.floor(Math.random() * 6); // 0 a 5 partidos
+            break;
+        case 2: // Malo
+            partidos = Math.floor(Math.random() * 10) + 6; // 6 a 15 partidos
+            break;
+        case 3: // Regular
+            partidos = Math.floor(Math.random() * 5) + 16; // 16 a 20 partidos
+            break;
+        case 4: // Bueno
+            partidos = Math.floor(Math.random() * 10) + 21; // 21 a 30 partidos
+            break;
+        case 5: // Muy bueno
+            partidos = Math.floor(Math.random() * 15) + 31; // 31 a 45 partidos
+            break;
+        case 6: // Excepcional
+            partidos = Math.floor(Math.random() * 6) + 45; // 45 a 50 partidos
+            break;
+        default:
+            partidos = 0; // Por defecto
+            break;
+    }
+
+    return partidos; // Retornar el número de partidos
 }
 
 function generarGolesAnuales() {
     const config = POSICION_CONFIG[playerStats.posicion];
-    return Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min;
+    const rendimientoValue = playerStats.rendimiento;
+
+    let goles;
+
+    switch (rendimientoValue) {
+        case 1: // Muy malo
+            goles = 0; // Casi no marcará goles
+            break;
+        case 2: // Malo
+            goles = Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min; // Goles base
+            break;
+        case 3: // Regular
+            goles = Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min + 2; // Incrementar ligeramente
+            break;
+        case 4: // Bueno
+            goles = Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min + 4; // Incrementar más
+            break;
+        case 5: // Muy bueno
+            goles = Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min + 6; // Incrementar aún más
+            break;
+        case 6: // Excepcional
+            goles = Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min + 8; // Máximo incremento
+            break;
+        default:
+            goles = 0;
+            break;
+    }
+
+    return goles; // Retornar el número de goles
 }
 
 function generarAsistenciasAnuales() {
     const config = POSICION_CONFIG[playerStats.posicion];
-    return Math.floor(Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min;
+    const rendimientoValue = playerStats.rendimiento;
+
+    let asistencias;
+
+    switch (rendimientoValue) {
+        case 1: // Muy malo
+            asistencias = 0; // Casi no hará asistencias
+            break;
+        case 2: // Malo
+            asistencias = Math.floor(Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min; // Asistencias base
+            break;
+        case 3: // Regular
+            asistencias = Math.floor(Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min + 1; // Incrementar ligeramente
+            break;
+        case 4: // Bueno
+            asistencias = Math.floor (Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min + 2; // Incrementar más
+            break;
+        case 5: // Muy bueno
+            asistencias = Math.floor(Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min + 3; // Incrementar aún más
+            break;
+        case 6: // Excepcional
+            asistencias = Math.floor(Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min + 5; // Máximo incremento
+            break;
+        default:
+            asistencias = 0;
+            break;
+    }
+
+    return asistencias; // Retornar el número de asistencias
 }
 
 function actualizarValoresDeMercado() {
@@ -315,57 +401,39 @@ function actualizarTablaYFilaConsolidada() {
 }
 
 function generateMarketValue() {
-    const edad = playerStats.age;
+    const baseValue = 100000; // Valor base
+    const rendimientoValue = playerStats.rendimiento;
     const media = playerStats.media;
-    const config = POSICION_CONFIG[playerStats.posicion];
+    const edad = playerStats.age;
 
-    // Verificar si la posición existe en POSICION_CONFIG
-    if (!config) {
-        console.error(`Posición no válida en POSICION_CONFIG: ${playerStats.posicion}`);
-        return Math.floor(Math.random() * 99500) + 500; // Valor por defecto o manejar el error de otra manera
+    // Calcular el valor en función del rendimiento
+    let valorPorRendimiento = baseValue * rendimientoValue;
+
+    // Ajustar por media
+    if (media > 80) {
+        valorPorRendimiento *= 1.5; // Aumentar el valor si la media es alta
+    } else if (media < 60) {
+        valorPorRendimiento *= 0.5; // Disminuir el valor si la media es baja
     }
 
-    let valorBase = Math.pow(media, 2) * 10000;
-
-    // Multiplicador por edad
-    let multiplicadorEdad = 1;
-    if (edad <= 18) {
-        multiplicadorEdad = 0.5 - (edad - 16) * 0.05;
-    } else if (edad <= 23) {
-        multiplicadorEdad = 0.5 - (edad - 20) * 0.05;
-    } else if (edad <= 28) {
-        multiplicadorEdad = 1;
-    } else {
-        multiplicadorEdad = Math.max(0.2, 1 - (edad - 28) * 0.1);
+    // Ajustar por edad
+    if (edad < 25) {
+        valorPorRendimiento *= 1.2; // Aumentar el valor si es joven
+    } else if (edad > 30) {
+        valorPorRendimiento *= 0.8; // Disminuir el valor si es mayor
     }
 
-    // Multiplicador por rendimiento
-    const rendimientoValue = rendimiento();
-    const multiplicadorRendimiento = rendimientoValue / 3;
+    playerStats.displayedMarketValue = valorPorRendimiento; // Almacenar el valor calculado
 
-    // Multiplicador por posición
-    const multiplicadorPosicion = config.valorMultiplicador;
-
-    // Calcular valor final
-    let valorFinal = valorBase * multiplicadorEdad * multiplicadorRendimiento * multiplicadorPosicion;
-
-    // Ajustes finales para valores más realistas
-    if (media >= 90) {
-        valorFinal *= 2;
-    }
-
-    // Establecer límites realistas
-    valorFinal = Math.max(100000, valorFinal);
-    valorFinal = Math.min(300000000, valorFinal);
-
-    return valorFinal;
+    return valorPorRendimiento;
 }
+
 
 function rendimiento() {
     const posicion = playerStats.posicion;
     const media = playerStats.media;
     const distribucion = RENDIMIENTO_CONFIG[posicion].distribucion;
-    
+
     // Ajuste por media del jugador
     let ajustePorMedia = 1;
     if (media >= 85) {
@@ -379,23 +447,18 @@ function rendimiento() {
     let probabilidadBajar = 0;
 
     if (playerStats.age < 21) {
-        // Jugadores muy jóvenes tienen una probabilidad de bajar
         probabilidadBajar = 0.2; // 20% de probabilidad de bajar
     } else if (playerStats.age >= 21 && playerStats.age <= 27) {
-        // Jugadores en desarrollo tienen una probabilidad moderada
         probabilidadBajar = 0.3; // 30% de probabilidad de bajar
     } else if (playerStats.age >= 28 && playerStats.age <= 34) {
-        // Jugadores maduros tienen una probabilidad baja
         probabilidadBajar = 0.4; // 40% de probabilidad de bajar
     } else {
-        // Jugadores veteranos tienen una probabilidad alta de bajar
         probabilidadBajar = 0.5; // 50% de probabilidad de bajar
     }
 
     // Generar número aleatorio para determinar si el rendimiento baja
     if (Math.random() < probabilidadBajar) {
-        // Disminuir el rendimiento en un valor aleatorio
-        return Math.max(1, Math.floor(Math.random() * 3)); // Bajar a un rendimiento entre 1 y 2
+        return 1; // Cambiar a valor numérico
     }
 
     // Generar número aleatorio para el rendimiento normal
@@ -406,14 +469,14 @@ function rendimiento() {
     for (let i = 0; i < distribucion.length; i++) {
         let probAjustada = distribucion[i].probabilidad * ajustePorMedia * ajustePorEdad;
         acumulado += probAjustada;
-        
+
         if (random <= acumulado) {
-            return distribucion[i].valor;
+            return distribucion[i].valor; // Retornar el valor numérico
         }
     }
 
-    // Por defecto, retornar el valor más bajo si algo sale mal
-    return 1;
+    // Por defecto, retornar 1 si algo sale mal
+    return 1; // Muy malo
 }
 
 // Función auxiliar para verificar que las probabilidades sumen 1
@@ -426,17 +489,18 @@ function verificarProbabilidades() {
 }
 
 function roundMarketValue(value) {
-    // Función mejorada para redondear valores de manera más realista
-    if (value < 1000000) {
-        // Menos de 1M: redondear a decenas de miles
-        return Math.round(value / 10000) * 10000;
-    } else if (value < 10000000) {
-        // Entre 1M y 10M: redondear a cientos de miles
-        return Math.round(value / 100000) * 100000;
-    } else {
-        // Más de 10M: redondear a millones
-        return Math.round(value / 1000000) * 1000000;
-    }
+    // // Función mejorada para redondear valores de manera más realista
+    // if (value < 1000000) {
+    //     // Menos de 1M: redondear a decenas de miles
+    //     return Math.round(value / 10000) * 10000;
+    // } else if (value < 10000000) {
+    //     // Entre 1M y 10M: redondear a cientos de miles
+    //     return Math.round(value / 100000) * 100000;
+    // } else {
+    //     // Más de 10M: redondear a millones
+    //     return Math.round(value / 1000000) * 1000000;
+    // }
+    return value;
 }
 
 function updatePlayerTable(stats) {
@@ -444,15 +508,28 @@ function updatePlayerTable(stats) {
     const newRow = document.createElement('tr');
     const currentYear = stats.startYear + stats.yearsPlayed; // Calcular el año actual
 
+    // Obtener el tipo de rendimiento basado en el número almacenado
+    let tipoRendimiento;
+    switch (stats.rendimiento) {
+        case 6: tipoRendimiento = "Excepcional"; break;
+        case 5: tipoRendimiento = "Muy bueno"; break;
+        case 4: tipoRendimiento = "Bueno"; break;
+        case 3: tipoRendimiento = "Regular"; break;
+        case 2: tipoRendimiento = "Malo"; break;
+        case 1: tipoRendimiento = "Muy malo"; break;
+        default: tipoRendimiento = "Desconocido"; // En caso de un valor inesperado
+    }
+
     newRow.innerHTML = `
         <td>${currentYear}</td>
         <td>${stats.age}</td>
         <td>${stats.club}</td>
         <td>${stats.media}</td>
-        <td>${stats.displayedMarketValue.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</td> <!-- Valor redondeado -->
-        <td>${stats.matches}</td> <!-- Partidos del año actual -->
-        <td>${stats.goals}</td> <!-- Goles del año actual -->
-        <td>${stats.assists}</td> <!-- Asistencias del año actual -->
+        <td>${stats.displayedMarketValue.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</td>
+        <td>${stats.matches}</td>
+        <td>${stats.goals}</td>
+        <td>${stats.assists}</td>
+        <td>${tipoRendimiento}</td> <!-- Agregar tipo de rendimiento aquí -->
     `;
     playerStatsTable.appendChild(newRow);
 }
