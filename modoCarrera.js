@@ -171,365 +171,273 @@ const RENDIMIENTO_CONFIG = {
 };
 
 
-let playerStats = {}; // Declarar playerStats fuera del evento del formulario
+// Variables globales para manejar el estado del jugador
+let playerStats = {
+    nombre: '',
+    apellido: '',
+    posicion: '',
+    añoActual: new Date().getFullYear(),
+    edad: 0,
+    club: '',
+    mediaInicial: 0,
+    historialRendimientoAnual: [],
+    valorMercadoInicial: 0
+};
 
-// Actualizar el evento del formulario para incluir la posición
+// Función para inicializar las estadísticas del jugador
+function inicializarJugador(nombre, apellido, posicion, edad, club, media) {
+    playerStats = {
+        nombre: nombre,
+        apellido: apellido,
+        posicion: posicion,
+        añoActual: new Date().getFullYear(),
+        edad: edad,
+        club: club,
+        mediaInicial: media,
+        media: media,
+        historialRendimientoAnual: [],
+        valorMercadoInicial: 0,
+        clubesJugados: [club],
+        totalPartidos: 0,
+        totalGoles: 0,
+        totalAsistencias: 0,
+        mejorMedia: media,
+        mejorValorMercado: 0
+    };
+}
+
+// Generar rendimiento anual
+function generarRendimientoAnual() {
+    return Math.floor(Math.random() * 6) + 1; // 1-6
+}
+
+// Calcular rendimiento de carrera
+function calcularRendimientoCarrera() {
+    const historial = playerStats.historialRendimientoAnual;
+    if (historial.length < 2) return 3; // Por defecto regular si no hay suficiente historial
+
+    const ultimosDosRendimientos = historial.slice(-2);
+    const promedioRedondeado = Math.ceil(
+        ultimosDosRendimientos.reduce((a, b) => a + b, 0) / 2
+    );
+
+    return promedioRedondeado;
+}
+
+// Generar partidos según rendimiento anual
+function generarPartidos(rendimientoAnual) {
+    const config = POSICION_CONFIG[playerStats.posicion];
+    const baseMin = config.partidosBase.min;
+    const baseMax = config.partidosBase.max;
+
+    switch (rendimientoAnual) {
+        case 6: return Math.floor(Math.random() * (baseMax - baseMin + 10)) + baseMax; // Excepcional: más partidos
+        case 5: return Math.floor(Math.random() * (baseMax - 5)) + baseMin + 5; // Muy bueno: sobre la media
+        case 4: return Math.floor(Math.random() * (baseMax - baseMin)) + baseMin; // Bueno: en la media
+        case 3: return Math.floor(Math.random() * (baseMin + 5)); // Regular: menos partidos
+        case 2: return Math.floor(Math.random() * 10); // Malo: pocos partidos
+        case 1: return Math.floor(Math.random() * 5); // Muy malo: casi sin jugar
+    }
+}
+
+// Generar goles según rendimiento anual
+function generarGoles(rendimientoAnual) {
+    const config = POSICION_CONFIG[playerStats.posicion];
+    const baseMin = config.golesBase.min;
+    const baseMax = config.golesBase.max;
+
+    switch (rendimientoAnual) {
+        case 6: return Math.floor(Math.random() * (baseMax + 10)) + baseMax; // Excepcional: muchos goles
+        case 5: return Math.floor(Math.random() * (baseMax - 5)) + baseMax - 5; // Muy bueno: cerca del máximo
+        case 4: return Math.floor(Math.random() * (baseMax - baseMin)) + baseMin; // Bueno: en la media
+        case 3: return Math.floor(Math.random() * (baseMin + 3)); // Regular: pocos goles
+        case 2: return Math.floor(Math.random() * 3); // Malo: casi sin goles
+        case 1: return 0; // Muy malo: sin goles
+    }
+}
+
+// Generar asistencias según rendimiento anual
+function generarAsistencias(rendimientoAnual) {
+    const config = POSICION_CONFIG[playerStats.posicion];
+    const baseMin = config.asistenciasBase.min;
+    const baseMax = config.asistenciasBase.max;
+
+    switch (rendimientoAnual) {
+        case 6: return Math.floor(Math.random() * (baseMax + 5)) + baseMax; // Excepcional: muchas asistencias
+        case 5: return Math.floor(Math.random() * (baseMax - 3)) + baseMax - 3; // Muy bueno: cerca del máximo
+        case 4: return Math.floor(Math.random() * (baseMax - baseMin)) + baseMin; // Bueno: en la media
+        case 3: return Math.floor(Math.random() * (baseMin + 2)); // Regular: pocas asistencias
+        case 2: return Math.floor(Math.random() * 2); // Malo: casi sin asistencias
+        case 1: return 0; // Muy malo: sin asistencias
+    }
+}
+
+// Actualizar media según rendimiento
+function actualizarMedia(rendimientoAnual) {
+    switch (rendimientoAnual) {
+        case 6: // Excepcional
+            playerStats.media += Math.floor(Math.random() * 3) + 4;
+            break;
+        case 5: // Muy bueno
+            playerStats.media += Math.floor(Math.random() * 3) + 1;
+            break;
+        case 4: // Bueno
+            playerStats.media += Math.random() < 0.5 ? 1 : 0;
+            break;
+        case 3: // Regular
+            playerStats.media -= Math.random() < 0.5 ? 1 : 0;
+            break;
+        case 2: // Malo
+            playerStats.media -= Math.floor(Math.random() * 2) + 1;
+            break;
+        case 1: // Muy malo
+            playerStats.media += Math.floor(Math.random() * 2) + 3;
+            break;
+    }
+    
+    // Limitar la media entre 50 y 99
+    playerStats.media = Math.max(50, Math.min(99, playerStats.media));
+}
+
+// Generar valor de mercado
+function generarValorMercado() {
+    const baseValor = 100000;
+    const rendimientoCarrera = calcularRendimientoCarrera();
+    const media = playerStats.media;
+    const edad = playerStats.edad;
+
+    let valorMultiplicador = 1;
+
+    // Ajuste por rendimiento
+    switch (rendimientoCarrera) {
+        case 6: valorMultiplicador *= 2; break;
+        case 5: valorMultiplicador *= 1.5; break;
+        case 4: valorMultiplicador *= 1.2; break;
+        case 3: valorMultiplicador *= 1; break;
+        case 2: valorMultiplicador *= 0.7; break;
+        case 1: valorMultiplicador *= 0.5; break;
+    }
+
+    // Ajuste por media
+    if (media >= 85) valorMultiplicador *= 2;
+    else if (media >= 75) valorMultiplicador *= 1.5;
+    else if (media >= 65) valorMultiplicador *= 1.2;
+
+    // Ajuste por edad
+    if (edad <= 21) valorMultiplicador *= 1.5;
+    else if (edad <= 25) valorMultiplicador *= 1.2;
+    else if (edad > 30) valorMultiplicador *= 0.8;
+
+    const valorCalculado = baseValor * valorMultiplicador * (0.9 + Math.random() * 0.2);
+
+    return Math.round(valorCalculado);
+}
+
+// Avanzar al siguiente año
+function avanzarAlSiguienteAno() {
+    // Generar rendimiento anual
+    const rendimientoAnual = generarRendimientoAnual();
+    
+    // Actualizar historial de rendimiento
+    playerStats.historialRendimientoAnual.push(rendimientoAnual);
+    
+    // Calcular rendimiento de carrera
+    const rendimientoCarrera = calcularRendimientoCarrera();
+
+    // Incrementar año y edad
+    playerStats.añoActual++;
+    playerStats.edad++;
+
+    // Generar estadísticas
+    const partidos = generarPartidos(rendimientoAnual);
+    const goles = generarGoles(rendimientoAnual);
+    const asistencias = generarAsistencias(rendimientoAnual);
+
+    // Actualizar medias totales
+    playerStats.totalPartidos += partidos;
+    playerStats.totalGoles += goles;
+    playerStats.totalAsistencias += asistencias;
+
+    // Actualizar media del jugador
+    actualizarMedia(rendimientoAnual);
+
+    // Actualizar mejor media
+    playerStats.mejorMedia = Math.max(playerStats.mejorMedia, playerStats.media);
+
+    // Generar valor de mercado
+    const valorMercado = generarValorMercado();
+    playerStats.mejorValorMercado = Math.max(playerStats.mejorValorMercado, valorMercado);
+
+    // Devolver objeto con los datos del año
+    return {
+        año: playerStats.añoActual,
+        edad: playerStats.edad,
+        club: playerStats.club,
+        rendimientoAnual: rendimientoAnual,
+        rendimientoCarrera: rendimientoCarrera,
+        partidos: partidos,
+        goles: goles,
+        asistencias: asistencias,
+        media: playerStats.media,
+        valorMercado: valorMercado
+    };
+}
+
+// Evento para inicializar jugador en el formulario
 document.getElementById('playerForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Obtener datos del formulario (agregar posición)
     const nombre = document.getElementById('nombre').value;
     const apellido = document.getElementById('apellido').value;
     const edad = parseInt(document.getElementById('edad').value);
     const posicion = document.getElementById('posicion').value;
     const club = document.getElementById('club').value;
-    const pais = document.getElementById('pais').value;
-    const mediaBase = parseInt(document.getElementById('media').value);
+    const media = parseInt(document.getElementById('media').value);
 
-    // Inicializar estadísticas del jugador (agregar posición)
-    playerStats = {
-        nombre: nombre,
-        apellido: apellido,
-        startYear: new Date().getFullYear(),
-        age: edad,
-        posicion: posicion, // Agregar posición
-        club: club,
-        media: mediaBase,
-        marketValue: generateMarketValue(),
-        displayedMarketValue: roundMarketValue(generateMarketValue()),
-        matches: 0,
-        goals: 0,
-        assists: 0,
-        totalMatches: 0,
-        totalGoals: 0,
-        totalAssists: 0,
-        clubsPlayed: [],
-        bestMedia: mediaBase,
-        highestMarketValue: 0,
-        yearsPlayed: 0
-    };
+    // Inicializar jugador
+    inicializarJugador(nombre, apellido, posicion, edad, club, media);
 
-    // Agregar el club a la lista de clubes jugados
-    if (!playerStats.clubsPlayed.includes(club)) {
-        playerStats.clubsPlayed.push(club);
-    }
+    // Generar primera temporada
+    const primerAno = avanzarAlSiguienteAno();
 
-    // Mostrar información del jugador
+    // Mostrar información en la tabla
     document.getElementById('playerInfo').style.display = 'block';
-    updatePlayerTable(playerStats);
+    updatePlayerTable(primerAno);
     updateConsolidatedRow(playerStats);
 });
 
+// Evento para avanzar al siguiente año
 document.getElementById('nextYearBtn').addEventListener('click', function() {
-    avanzarAlSiguienteAno();
+    const siguienteAno = avanzarAlSiguienteAno();
+    updatePlayerTable(siguienteAno);
+    updateConsolidatedRow(playerStats);
 });
 
-function avanzarAlSiguienteAno() {
-    incrementarEdadYAnosJugados();
-    generarEstadisticasAnuales();
-    actualizarValoresDeMercado();
-    actualizarMedia();
-    actualizarTablaYFilaConsolidada();
-}
-
-function incrementarEdadYAnosJugados() {
-    playerStats.yearsPlayed++; // Incrementar años jugados
-    playerStats.age++; // Incrementar edad
-}
-
-function generarEstadisticasAnuales() {
-    playerStats.matches = generarPartidosAnuales();
-    playerStats.goals = generarGolesAnuales();
-    playerStats.assists = generarAsistenciasAnuales();
-
-    // Calcular rendimiento y almacenar el valor numérico
-    const rendimientoValue = rendimiento(); // Esto ahora devolverá un número
-    playerStats.rendimiento = rendimientoValue; // Almacenar el rendimiento como número
-
-    // Actualizar los totales acumulados
-    playerStats.totalMatches += playerStats.matches;
-    playerStats.totalGoals += playerStats.goals;
-    playerStats.totalAssists += playerStats.assists;
-}
-
-function generarPartidosAnuales() {
-    const rendimientoValue = playerStats.rendimiento; // Obtener el rendimiento
-    let partidos;
-
-    switch (rendimientoValue) {
-        case 1: // Muy malo
-            partidos = Math.floor(Math.random() * 6); // 0 a 5 partidos
-            break;
-        case 2: // Malo
-            partidos = Math.floor(Math.random() * 10) + 6; // 6 a 15 partidos
-            break;
-        case 3: // Regular
-            partidos = Math.floor(Math.random() * 5) + 16; // 16 a 20 partidos
-            break;
-        case 4: // Bueno
-            partidos = Math.floor(Math.random() * 10) + 21; // 21 a 30 partidos
-            break;
-        case 5: // Muy bueno
-            partidos = Math.floor(Math.random() * 15) + 31; // 31 a 45 partidos
-            break;
-        case 6: // Excepcional
-            partidos = Math.floor(Math.random() * 6) + 45; // 45 a 50 partidos
-            break;
-        default:
-            partidos = 0; // Por defecto
-            break;
-    }
-
-    return partidos; // Retornar el número de partidos
-}
-
-function generarGolesAnuales() {
-    const config = POSICION_CONFIG[playerStats.posicion];
-    const rendimientoValue = playerStats.rendimiento;
-
-    let goles;
-
-    switch (rendimientoValue) {
-        case 1: // Muy malo
-            goles = 0; // Casi no marcará goles
-            break;
-        case 2: // Malo
-            goles = Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min; // Goles base
-            break;
-        case 3: // Regular
-            goles = Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min + 2; // Incrementar ligeramente
-            break;
-        case 4: // Bueno
-            goles = Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min + 4; // Incrementar más
-            break;
-        case 5: // Muy bueno
-            goles = Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min + 6; // Incrementar aún más
-            break;
-        case 6: // Excepcional
-            goles = Math.floor(Math.random() * (config.golesBase.max - config.golesBase.min + 1)) + config.golesBase.min + 8; // Máximo incremento
-            break;
-        default:
-            goles = 0;
-            break;
-    }
-
-    return goles; // Retornar el número de goles
-}
-
-function generarAsistenciasAnuales() {
-    const config = POSICION_CONFIG[playerStats.posicion];
-    const rendimientoValue = playerStats.rendimiento;
-
-    let asistencias;
-
-    switch (rendimientoValue) {
-        case 1: // Muy malo
-            asistencias = 0; // Casi no hará asistencias
-            break;
-        case 2: // Malo
-            asistencias = Math.floor(Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min; // Asistencias base
-            break;
-        case 3: // Regular
-            asistencias = Math.floor(Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min + 1; // Incrementar ligeramente
-            break;
-        case 4: // Bueno
-            asistencias = Math.floor (Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min + 2; // Incrementar más
-            break;
-        case 5: // Muy bueno
-            asistencias = Math.floor(Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min + 3; // Incrementar aún más
-            break;
-        case 6: // Excepcional
-            asistencias = Math.floor(Math.random() * (config.asistenciasBase.max - config.asistenciasBase.min + 1)) + config.asistenciasBase.min + 5; // Máximo incremento
-            break;
-        default:
-            asistencias = 0;
-            break;
-    }
-
-    return asistencias; // Retornar el número de asistencias
-}
-
-function actualizarValoresDeMercado() {
-    playerStats.marketValue = generateMarketValue(); // Valor de mercado real
-    playerStats.displayedMarketValue = roundMarketValue(playerStats.marketValue); // Valor de mercado redondeado
-
-    // Inicializar highestMarketValue si es la primera temporada
-    if (playerStats.yearsPlayed === 1) {
-        playerStats.highestMarketValue = roundMarketValue(playerStats.marketValue); // Establecer el primer valor como el más alto y redondeado
-    } else {
-        // Actualizar mejor media y valor de mercado más alto
-        playerStats.bestMedia = Math.max(playerStats.bestMedia, playerStats.media);
-        playerStats.highestMarketValue = roundMarketValue(Math.max(playerStats.highestMarketValue, playerStats.marketValue)); // Redondear el valor más alto
-    }
-}
-
-function actualizarMedia() {
-    const edad = playerStats.age;
-    let probabilidadSubida = 0;
-    let maximoIncremento = 0;
-    
-    // Definir probabilidades y máximos incrementos según la edad
-    if (edad <= 21) {
-        // Jugadores muy jóvenes: alta probabilidad de mejora y mayor incremento
-        probabilidadSubida = 0.8;
-        maximoIncremento = 4;
-    } else if (edad <= 27) {
-        // Jugadores en desarrollo: probabilidad media y incremento moderado
-        probabilidadSubida = 0.6;
-        maximoIncremento = 2;
-    } else if (edad <= 34) {
-        // Jugadores maduros: baja probabilidad y pequeño incremento
-        probabilidadSubida = 0.3;
-        maximoIncremento = 1;
-    } else {
-        // Jugadores veteranos: solo bajan
-        const decrementoBase = Math.floor(Math.random() * 2) + 1; // Bajada de 1-2 puntos
-        playerStats.media = Math.max(50, playerStats.media - decrementoBase); // No bajar de 50
-        return;
-    }
-
-    // Determinar si hay mejora basado en la probabilidad
-    if (Math.random() < probabilidadSubida) {
-        const incremento = Math.floor(Math.random() * maximoIncremento) + 1;
-        playerStats.media = Math.min(99, playerStats.media + incremento); // No superar 99
-    }
-}
-
-function actualizarTablaYFilaConsolidada() {
-    updatePlayerTable(playerStats);
-    updateConsolidatedRow(playerStats);
-}
-
-function generateMarketValue() {
-    const baseValue = 100000; // Valor base
-    const rendimientoValue = playerStats.rendimiento;
-    const media = playerStats.media;
-    const edad = playerStats.age;
-
-    // Calcular el valor en función del rendimiento
-    let valorPorRendimiento = baseValue * rendimientoValue;
-
-    // Ajustar por media
-    if (media > 80) {
-        valorPorRendimiento *= 1.5; // Aumentar el valor si la media es alta
-    } else if (media < 60) {
-        valorPorRendimiento *= 0.5; // Disminuir el valor si la media es baja
-    }
-
-    // Ajustar por edad
-    if (edad < 25) {
-        valorPorRendimiento *= 1.2; // Aumentar el valor si es joven
-    } else if (edad > 30) {
-        valorPorRendimiento *= 0.8; // Disminuir el valor si es mayor
-    }
-
-    playerStats.displayedMarketValue = valorPorRendimiento; // Almacenar el valor calculado
-
-    return valorPorRendimiento;
-}
-
-
-function rendimiento() {
-    const posicion = playerStats.posicion;
-    const media = playerStats.media;
-    const distribucion = RENDIMIENTO_CONFIG[posicion].distribucion;
-
-    // Ajuste por media del jugador
-    let ajustePorMedia = 1;
-    if (media >= 85) {
-        ajustePorMedia = 1.2;
-    } else if (media <= 65) {
-        ajustePorMedia = 0.8;
-    }
-
-    // Ajuste por edad
-    let ajustePorEdad = 1;
-    let probabilidadBajar = 0;
-
-    if (playerStats.age < 21) {
-        probabilidadBajar = 0.2; // 20% de probabilidad de bajar
-    } else if (playerStats.age >= 21 && playerStats.age <= 27) {
-        probabilidadBajar = 0.3; // 30% de probabilidad de bajar
-    } else if (playerStats.age >= 28 && playerStats.age <= 34) {
-        probabilidadBajar = 0.4; // 40% de probabilidad de bajar
-    } else {
-        probabilidadBajar = 0.5; // 50% de probabilidad de bajar
-    }
-
-    // Generar número aleatorio para determinar si el rendimiento baja
-    if (Math.random() < probabilidadBajar) {
-        return 1; // Cambiar a valor numérico
-    }
-
-    // Generar número aleatorio para el rendimiento normal
-    const random = Math.random();
-    let acumulado = 0;
-
-    // Ajustar probabilidades con los factores
-    for (let i = 0; i < distribucion.length; i++) {
-        let probAjustada = distribucion[i].probabilidad * ajustePorMedia * ajustePorEdad;
-        acumulado += probAjustada;
-
-        if (random <= acumulado) {
-            return distribucion[i].valor; // Retornar el valor numérico
-        }
-    }
-
-    // Por defecto, retornar 1 si algo sale mal
-    return 1; // Muy malo
-}
-
-// Función auxiliar para verificar que las probabilidades sumen 1
-function verificarProbabilidades() {
-    for (const posicion in RENDIMIENTO_CONFIG) {
-        const suma = RENDIMIENTO_CONFIG[posicion].distribucion
-            .reduce((acc, item) => acc + item.probabilidad, 0);
-        console.log(`Suma de probabilidades para ${posicion}: ${suma}`);
-    }
-}
-
-function roundMarketValue(value) {
-    // // Función mejorada para redondear valores de manera más realista
-    // if (value < 1000000) {
-    //     // Menos de 1M: redondear a decenas de miles
-    //     return Math.round(value / 10000) * 10000;
-    // } else if (value < 10000000) {
-    //     // Entre 1M y 10M: redondear a cientos de miles
-    //     return Math.round(value / 100000) * 100000;
-    // } else {
-    //     // Más de 10M: redondear a millones
-    //     return Math.round(value / 1000000) * 1000000;
-    // }
-    return value;
-}
-
-function updatePlayerTable(stats) {
+// Funciones de actualización de tabla (estas pueden mantenerse como estaban)
+function updatePlayerTable(anoData) {
     const playerStatsTable = document.getElementById('playerStats');
     const newRow = document.createElement('tr');
-    const currentYear = stats.startYear + stats.yearsPlayed; // Calcular el año actual
 
-    // Obtener el tipo de rendimiento basado en el número almacenado
     let tipoRendimiento;
-    switch (stats.rendimiento) {
+    switch (anoData.rendimientoCarrera) {
         case 6: tipoRendimiento = "Excepcional"; break;
         case 5: tipoRendimiento = "Muy bueno"; break;
         case 4: tipoRendimiento = "Bueno"; break;
         case 3: tipoRendimiento = "Regular"; break;
         case 2: tipoRendimiento = "Malo"; break;
         case 1: tipoRendimiento = "Muy malo"; break;
-        default: tipoRendimiento = "Desconocido"; // En caso de un valor inesperado
     }
 
     newRow.innerHTML = `
-        <td>${currentYear}</td>
-        <td>${stats.age}</td>
-        <td>${stats.club}</td>
-        <td>${stats.media}</td>
-        <td>${stats.displayedMarketValue.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</td>
-        <td>${stats.matches}</td>
-        <td>${stats.goals}</td>
-        <td>${stats.assists}</td>
-        <td>${tipoRendimiento}</td> <!-- Agregar tipo de rendimiento aquí -->
+        <td>${anoData.año}</td>
+        <td>${anoData.edad}</td>
+        <td>${playerStats.club}</td>
+        <td>${anoData.media}</td>
+        <td>${anoData.valorMercado.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</td>
+        <td>${anoData.partidos}</td>
+        <td>${anoData.goles}</td>
+        <td>${anoData.asistencias}</td>
+        <td>${tipoRendimiento}</td>
     `;
     playerStatsTable.appendChild(newRow);
 }
@@ -538,11 +446,11 @@ function updateConsolidatedRow(stats) {
     const consolidatedRow = document.getElementById('consolidatedStats');
     consolidatedRow.innerHTML = `
         <td>${stats.nombre} ${stats.apellido}</td>
-        <td>${stats.clubsPlayed.join(', ')}</td>
-        <td>${stats.bestMedia}</td>
-        <td>${stats.highestMarketValue.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</td>
-        <td>${stats.totalMatches}</td>
-        <td>${stats.totalGoals}</td>
-        <td>${stats.totalAssists}</td>
+        <td>${stats.clubesJugados.join(', ')}</td>
+        <td>${stats.mejorMedia}</td>
+        <td>${stats.mejorValorMercado.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</td>
+        <td>${stats.totalPartidos}</td>
+        <td>${stats.totalGoles}</td>
+        <td>${stats.totalAsistencias}</td>
     `;
-} 
+}
