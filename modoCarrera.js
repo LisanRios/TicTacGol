@@ -206,9 +206,66 @@ function inicializarJugador(nombre, apellido, posicion, edad, club, media) {
     };
 }
 
-// Generar rendimiento anual
 function generarRendimientoAnual() {
-    return Math.floor(Math.random() * 6) + 1; // 1-6
+    let rendimiento;
+    
+    if (playerStats.edad < 22) {
+        // Más probabilidades de crecer
+        const probabilidades = [
+            { valor: 6, probabilidad: 0.20 }, // Excepcional crecimiento
+            { valor: 5, probabilidad: 0.30 }, // Muy bueno
+            { valor: 4, probabilidad: 0.25 }, // Bueno
+            { valor: 3, probabilidad: 0.15 }, // Regular
+            { valor: 2, probabilidad: 0.08 }, // Malo
+            { valor: 1, probabilidad: 0.02 }  // Muy malo
+        ];
+        
+        rendimiento = seleccionarPonderado(probabilidades);
+    } else if (playerStats.edad >= 22 && playerStats.edad < 28) {
+        // Mantener las probabilidades originales
+        rendimiento = Math.floor(Math.random() * 6) + 1;
+    } else if (playerStats.edad >= 28 && playerStats.edad < 32) {
+        // Más probabilidades de mantenerse estable
+        const probabilidades = [
+            { valor: 6, probabilidad: 0.05 }, // Excepcional
+            { valor: 5, probabilidad: 0.15 }, // Muy bueno
+            { valor: 4, probabilidad: 0.40 }, // Bueno
+            { valor: 3, probabilidad: 0.25 }, // Regular
+            { valor: 2, probabilidad: 0.10 }, // Malo
+            { valor: 1, probabilidad: 0.05 }  // Muy malo
+        ];
+        
+        rendimiento = seleccionarPonderado(probabilidades);
+    } else {
+        // Más probabilidades de bajar
+        const probabilidades = [
+            { valor: 6, probabilidad: 0.02 }, // Excepcional (muy raro)
+            { valor: 5, probabilidad: 0.08 }, // Muy bueno
+            { valor: 4, probabilidad: 0.20 }, // Bueno
+            { valor: 3, probabilidad: 0.30 }, // Regular
+            { valor: 2, probabilidad: 0.25 }, // Malo
+            { valor: 1, probabilidad: 0.15 }  // Muy malo
+        ];
+        
+        rendimiento = seleccionarPonderado(probabilidades);
+    }
+    
+    return rendimiento;
+}
+
+// Función auxiliar para selección ponderada
+function seleccionarPonderado(probabilidades) {
+    const random = Math.random();
+    let acumulado = 0;
+    
+    for (let item of probabilidades) {
+        acumulado += item.probabilidad;
+        if (random <= acumulado) {
+            return item.valor;
+        }
+    }
+    
+    return probabilidades[probabilidades.length - 1].valor;
 }
 
 // Calcular rendimiento de carrera
@@ -299,38 +356,110 @@ function actualizarMedia(rendimientoAnual) {
     playerStats.media = Math.max(50, Math.min(99, playerStats.media));
 }
 
-// Generar valor de mercado
+// Modificar la función de generación de valor de mercado
 function generarValorMercado() {
-    const baseValor = 100000;
-    const rendimientoCarrera = calcularRendimientoCarrera();
-    const media = playerStats.media;
-    const edad = playerStats.edad;
+    const baseValores = {
+        '<50': [0, 50000],
+        '50-55': [50000, 100000],
+        '55-60': [100000, 220000],
+        '60-65': [220000, 720000],
+        '65-70': [720000, 2100000],
+        '70-75': [2100000, 13000000],
+        '75-80': [13000000, 29000000],
+        '80-85': [29000000, 56000000],
+        '85-90': [56000000, 80000000],
+        '>90': [80000000, 300000000]
+    };
 
     let valorMultiplicador = 1;
+    const media = playerStats.media;
+    const edad = playerStats.edad;
+    const rendimientoCarrera = calcularRendimientoCarrera();
+
+    // Seleccionar rango de valores basado en la media
+    let rangoValor;
+    for (let [key, rango] of Object.entries(baseValores)) {
+        if (
+            (key === '<50' && media < 50) ||
+            (key === '>90' && media > 90) ||
+            (key.includes('-') && 
+             parseInt(key.split('-')[0]) <= media && 
+             parseInt(key.split('-')[1]) > media)
+        ) {
+            rangoValor = rango;
+            break;
+        }
+    }
 
     // Ajuste por rendimiento
     switch (rendimientoCarrera) {
-        case 6: valorMultiplicador *= 2; break;
-        case 5: valorMultiplicador *= 1.5; break;
-        case 4: valorMultiplicador *= 1.2; break;
+        case 6: valorMultiplicador *= 1.5; break;
+        case 5: valorMultiplicador *= 1.3; break;
+        case 4: valorMultiplicador *= 1.1; break;
         case 3: valorMultiplicador *= 1; break;
-        case 2: valorMultiplicador *= 0.7; break;
+        case 2: valorMultiplicador *= 0.8; break;
         case 1: valorMultiplicador *= 0.5; break;
     }
-
-    // Ajuste por media
-    if (media >= 85) valorMultiplicador *= 2;
-    else if (media >= 75) valorMultiplicador *= 1.5;
-    else if (media >= 65) valorMultiplicador *= 1.2;
 
     // Ajuste por edad
     if (edad <= 21) valorMultiplicador *= 1.5;
     else if (edad <= 25) valorMultiplicador *= 1.2;
-    else if (edad > 30) valorMultiplicador *= 0.8;
+    else if (edad > 30) valorMultiplicador *= 0.7;
 
-    const valorCalculado = baseValor * valorMultiplicador * (0.9 + Math.random() * 0.2);
+    const valorMinimo = rangoValor[0];
+    const valorMaximo = rangoValor[1];
+
+    const valorCalculado = valorMinimo + 
+        Math.random() * (valorMaximo - valorMinimo) * valorMultiplicador;
 
     return Math.round(valorCalculado);
+}
+
+// Nueva función de contrato 
+async function mostrarOfertas() {
+    // Simular lógica de contratos con clubes
+    const rendimientoUltimosDosAnos = playerStats.historialRendimientoAnual.slice(-2);
+    const rendimientoPromedio = rendimientoUltimosDosAnos.reduce((a, b) => a + b, 0) / 2;
+
+    let ofertas = [];
+
+    // Opción 1: Renovación si el rendimiento no es malo
+    if (rendimientoPromedio > 2) {
+        ofertas.push({
+            tipo: 'Renovar',
+            club: playerStats.club,
+            años: Math.floor(Math.random() * 3) + 1,
+            sueldo: Math.round(playerStats.mejorValorMercado * 0.25 * (Math.random() * 6))
+        });
+    }
+
+    // Cargar clubes del JSON (pendiente de implementación completa)
+    // Esta parte requeriría cargar el archivo clubes.json
+    const clubesDisponibles = [
+        // Placeholder para clubes
+        { nombre: 'Club A', nivel_requerido: 70 },
+        { nombre: 'Club B', nivel_requerido: 75 },
+        { nombre: 'Club C', nivel_requerido: 80 }
+    ];
+
+    // Generar 2 ofertas de nuevos clubes
+    for (let i = 0; i < 2; i++) {
+        const clubAleatorio = clubesDisponibles[Math.floor(Math.random() * clubesDisponibles.length)];
+        
+        ofertas.push({
+            tipo: 'Nuevo Club',
+            club: clubAleatorio.nombre,
+            años: Math.floor(Math.random() * 3) + 1,
+            sueldo: Math.round(playerStats.mejorValorMercado * 0.25 * (Math.random() * 6))
+        });
+    }
+
+    // Mostrar ofertas (implementación de UI pendiente)
+    // Aquí iría el código para mostrar un diálogo de selección
+    console.log('Ofertas disponibles:', ofertas);
+
+    // Retornar la oferta seleccionada (pendiente implementación de selección)
+    return ofertas[0];
 }
 
 // Avanzar al siguiente año
@@ -338,6 +467,15 @@ function avanzarAlSiguienteAno() {
     // Generar rendimiento anual
     const rendimientoAnual = generarRendimientoAnual();
     
+    // Verificar si es momento de nuevo contrato (por ejemplo, cada 2-3 años)
+    if (playerStats.historialRendimientoAnual.length % 2 === 0) {
+        const nuevoContrato = mostrarOfertas();
+        // Aquí iría la lógica para actualizar el club del jugador
+    }
+
+    // Resto del código de avanzarAlSiguienteAno existente...
+
+
     // Actualizar historial de rendimiento
     playerStats.historialRendimientoAnual.push(rendimientoAnual);
     
@@ -382,6 +520,8 @@ function avanzarAlSiguienteAno() {
         valorMercado: valorMercado
     };
 }
+
+
 
 // Evento para inicializar jugador en el formulario
 document.getElementById('playerForm').addEventListener('submit', function(event) {
