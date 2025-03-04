@@ -315,15 +315,14 @@ function checkGuess() {
   }
 
   const attributes = [
-    { key: "Nombre", label: "Nombre" },
     { key: "Nacionalidad", label: "Nacionalidad" },
     { key: "Confederación", label: "Confederación" },
-    { key: "Media", label: "Media" },
     { key: "Posición", label: "Posición" },
-    { key: "Skills", label: "Skills" },
     { key: "Altura (cm)", label: "Altura" },
     { key: "Trayectoria", label: "Trayectoria" },
   ];
+  
+  
 
   attributes.forEach(({ key, label }) => {
     const div = document.createElement("div");
@@ -436,40 +435,40 @@ async function loadPlayers() {
 // Modificar la función endGame para manejar correctamente las estadísticas
 function endGame(won) {
   const gameOver = document.getElementById("gameOver");
-  if (won) {
-    if (gameOver) {
-      gameOver.innerHTML = `¡Felicitaciones! Has adivinado al jugador: ${targetPlayer.Nombre}`;
-      gameOver.style.color = "#4CAF50";
-    }
-    score.wins++;
-    currentStreak++;
-    bestStreak = Math.max(bestStreak, currentStreak);
-    const shareButton = document.getElementById("shareButton");
-    if (shareButton) shareButton.style.display = "block";
-  } else {
-    if (gameOver) {
-      gameOver.innerHTML = `¡Game Over! El jugador era: ${targetPlayer.Nombre}`;
-      gameOver.style.color = "#ff6b6b";
-    }
-    score.losses++;
-    currentStreak = 0;
+  gameOver.innerHTML = won
+      ? "<h2>¡Felicidades! Has adivinado correctamente.</h2>"
+      : `<h2>¡Perdiste! El jugador correcto era: ${targetPlayer.Nombre}</h2>`;
+
+  if (!won) {
+      // Crear una fila con las características del jugador correcto
+      const correctPlayerRow = document.createElement("div");
+      correctPlayerRow.classList.add("attempt");
+
+      const attributes = [
+          "Nacionalidad", "Confederación",
+          "Posición", "Altura (cm)", "Trayectoria"
+      ];
+
+      attributes.forEach(attr => {
+          const attrDiv = document.createElement("div");
+          attrDiv.classList.add("attribute", "correct", "trayectoria"); // Se marca en verde
+          attrDiv.textContent = targetPlayer[attr] || "N/A";
+          correctPlayerRow.appendChild(attrDiv);
+      });
+
+      const attemptsList = document.getElementById("attemptsList");
+      attemptsList.appendChild(correctPlayerRow);
   }
 
-  score.gamesPlayed++;
+  document.getElementById("playerInput").disabled = true;
+  document.getElementById("guessButton").disabled = true;
 
-  const playerInput = document.getElementById("playerInput");
-  if (playerInput) playerInput.disabled = true;
+  const shareButton = document.getElementById("shareButton");
+  if (shareButton) shareButton.style.display = "block";
 
-  const guessButton = document.getElementById("guessButton");
-  if (guessButton) guessButton.disabled = true;
-
-  const newGameButton = document.getElementById("newGameButton");
-  if (newGameButton) newGameButton.style.display = "block";
-
-  updateAttemptsCounter();
-  updateStatistics();
-  saveStats(); // Asegúrate de guardar las estadísticas actualizadas
+  gameStarted = false;
 }
+  
 
 // Funciones para persistir estadísticas
 function saveStats() {
@@ -539,6 +538,7 @@ function shareResult() {
 function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   loadPlayers();

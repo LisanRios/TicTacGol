@@ -169,9 +169,10 @@ button:active {
   text-overflow: clip;
 }
 
+
 .attempt {
   display: grid;
-  grid-template-columns: repeat(7, minmax(80px, 1fr)) auto;
+  grid-template-columns: repeat(5, minmax(80px, 1fr));
   gap: var(--spacing-xs);
   margin-bottom: var(--spacing-sm);
 }
@@ -522,6 +523,10 @@ button:active {
     gap: var(--spacing-xs); /* Espaciado entre botones */
   }
 
+  .attribute.trayectoria {
+    min-width: 100%;
+  }
+
   #playerInput {
     font-size: 0.9rem; /* Ajusta el tamaño de la fuente del input */
   }
@@ -532,13 +537,13 @@ button:active {
 }
 
 .attempt-headers {
-  display: flex;
-  align-items: center;
-}
-
-.attribute {
-  flex: 1;
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(80px, 1fr));
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+  background-color: var(--background-color);
+  padding: var(--spacing-sm);
 }
 
 .game-buttons {
